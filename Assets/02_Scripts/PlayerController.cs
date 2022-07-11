@@ -207,7 +207,6 @@ public class PlayerController : MonoBehaviour
 
                 case Player_State_Enum.Stoping:
                     PowerUP();
-                    Debug.Log("qwe");
                     break;
 
                 default:
@@ -221,12 +220,13 @@ public class PlayerController : MonoBehaviour
 
     private void LeftRotate()
     {
+        if (playerData.current_attackPower <= 0) return;
         transform.Rotate(new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime);
-
     }
 
     private void RightRotate()
     {
+        if (playerData.current_attackPower <= 0) return;
         transform.Rotate(new Vector3(0, 0, -1) * playerData.moveSpeed * Time.deltaTime);
     }
 
