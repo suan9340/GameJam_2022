@@ -24,4 +24,17 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+    public BulletPoolManager poolManager { get; private set; }
+
+    public Vector2 MinPosition { get; private set; }
+    public Vector2 MaxPosition { get; private set; }
+
+    private void Start()
+    {
+        MinPosition = new Vector2(-5f, -7f);
+        MaxPosition = new Vector2(5f, 7f);
+
+        poolManager = FindObjectOfType<BulletPoolManager>();
+    }
 }
