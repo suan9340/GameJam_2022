@@ -9,9 +9,9 @@ public class PlayerController : MonoBehaviour
 
     public static readonly WaitForSeconds checkTime = new WaitForSeconds(1f);
 
-    public bool isLeftBtn = false;
-    public bool isRightBtn = false;
-    public bool isShooting = false;
+    private bool isLeftBtn = false;
+    private bool isRightBtn = false;
+    private bool isShooting = false;
 
     private void Start()
     {
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     public void OnClickRightUp()
     {
         isRightBtn = false;
-    } 
+    }
     #endregion
 
     private void InputKey()
@@ -82,26 +82,51 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ChangeBoolen(bool _isCheck)
-    {
-
-    }
-
     private void CheckState()
     {
         if (!isShooting)
         {
             if (isLeftBtn)
-                Debug.Log("왼쪽");
+            {
+                Debug.Log("좌클");
+                playerState = Player_State_Enum.LeftRotating;
+            }
 
             if (isRightBtn)
-                Debug.Log("오른쪽");
+            {
+                Debug.Log("우클");
+                playerState = Player_State_Enum.RightRotating;
+            }
         }
 
         if (isShooting)
         {
             Debug.Log("공격");
+            playerState = Player_State_Enum.Attacking;
         }
 
+    }
+
+    private void LeftRotate()
+    {
+
+    }
+
+    private void RightRotate()
+    {
+
+    }
+
+    private void Shoote()
+    {
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag(ConstantManager.TAG_ENEMY))
+        {
+            Debug.Log("GameOut");
+        }
     }
 }
