@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8a2bc52b820596448ab228905b21dea2
+guid: 800ef3914322ab248aa7ad418e4f0824
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,9 +9,8 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Rider
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: 132a0e110a8a139458e56f3b4ff1a91b, type: 3}
+  - Round Control
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
