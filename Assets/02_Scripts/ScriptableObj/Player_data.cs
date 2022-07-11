@@ -7,7 +7,7 @@ using UnityEngine;
 menuName = "Scriptable Object/PlayerData")]
 public class Player_data : ScriptableObject
 {
-    public float playerHp;
-    public float attackPower;
+    public float current_attackPower;
+    public float max_attackPower;
     public float moveSpeed;
 }
