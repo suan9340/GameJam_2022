@@ -12,10 +12,10 @@ public class PlayerController : MonoBehaviour
     public static readonly WaitForSeconds playerDelay = new WaitForSeconds(0.1f);
 
     // 키 입력받는 bool
-    public bool isLeftBtn = false;
-    public bool isRightBtn = false;
-    public bool isShooting = false;
-    public bool isStoping = false;
+    private bool isLeftBtn = false;
+    private bool isRightBtn = false;
+    private bool isShooting = false;
+    private bool isStoping = false;
 
     // 중복출력 안되게 하는 bool
     private bool isLPush = false;
@@ -261,6 +261,7 @@ public class PlayerController : MonoBehaviour
         if (playerData.current_attackPower <= 0) return;
         //transform.Rotate(new Vector3(0, 0, -1) * playerData.moveSpeed * Time.deltaTime);
         transform.Rotate(new Vector3(0, 0, -1) * playerData.moveSpeed * Time.deltaTime);
+
 
         //if (transform.localEulerAngles.z <= 0f && transform.localEulerAngles.z <= -180f)
         //    transform.localEulerAngles -= new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime;

@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item1 : MonoBehaviour,Item_Interface
+public class Item1 : ItemMOM
 {
-
-    public void Ability()
+    protected override void ActionItem()
     {
-
+        
     }
 }
