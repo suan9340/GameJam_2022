@@ -265,8 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e52927b6e62b24945a78a273d3438d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawn: 0
-  Enemy: {fileID: 2097468746018272464, guid: 155f86a8eb2af0e468cb67b43c26de06, type: 3}
+  enemyObj: {fileID: 2097468746018272464, guid: 155f86a8eb2af0e468cb67b43c26de06, type: 3}
+  spawnPoint: []
 --- !u!4 &1073338549
 Transform:
   m_ObjectHideFlags: 0

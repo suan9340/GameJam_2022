@@ -4,26 +4,21 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
-    public bool enableSpawn = false;
-
     public GameObject enemyObj;
 
-    public GameObject[] spawnPoint;
-
-    public static readonly WaitForSeconds enemyDelay = new WaitForSeconds(2.5f);
+    public static readonly WaitForSeconds enemyDelay = new WaitForSeconds(2f);
     void Start()
     {
-        enableSpawn = true;
-        InvokeRepeating("SpawnEnemy", 3, 2.5f);
-
+        StartCoroutine(ReadySpawnEnemy());
     }
 
     private IEnumerator ReadySpawnEnemy()
     {
-        yield return new WaitForSeconds(2f);
+        //yield return new WaitForSeconds(2f);
 
         while(true)
         {
+            SpawnEnemy();
 
             yield return enemyDelay;
         }
