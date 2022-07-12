@@ -32,7 +32,9 @@ public class UIManager : MonoBehaviour
     [Header("게임 카운트다운 TEXT")] public Text countDownText;
 
     [Header("설정창 UI")]
-    public GameObject mainSettngUI = null;
+    public Image mainSettngUI = null;
+
+    private bool isCount = false;
 
     private void Update()
     {
@@ -43,6 +45,7 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (isCount) return;
             OnClickSettingChang();
         }
     }
@@ -56,18 +59,19 @@ public class UIManager : MonoBehaviour
         if (isSettingChang)
         {
             GameManager.Instance.gameState = Game_State_Enum.isSetting;
-            mainSettngUI.SetActive(true);
+            mainSettngUI.gameObject.SetActive(true);
             Time.timeScale = 0f;
         }
         else
         {
+            mainSettngUI.gameObject.SetActive(false);
             StartCoroutine(CountDownReadyGame());
-            mainSettngUI.SetActive(false);
         }
     }
 
     private IEnumerator CountDownReadyGame()
     {
+        isCount = true;
         countDownText.text = $"3";
         yield return readyDelay;
 
@@ -79,6 +83,7 @@ public class UIManager : MonoBehaviour
 
         countDownText.text = $" ";
 
+        isCount = false;    
         Time.timeScale = 1f;
     }
 }
