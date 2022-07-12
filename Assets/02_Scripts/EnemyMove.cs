@@ -10,17 +10,20 @@ public class EnemyMove : MonoBehaviour
 
     [SerializeField] private Vector2 followTarget = Vector2.zero;
     [SerializeField] private float moveSpeed = 1f;
-    [Header("체력")][SerializeField] private float enemyhp = 10f;
+    [Header("최고 체력")][SerializeField] private float highhp = 10f;
+    [Header("최악 체력")][SerializeField] private float lowhp = 10f;
 
     [Header("UI 관련")]
     [SerializeField] private Text textObj = null;
 
-    private Camera camera;
+    public float enemyhp;
+
     private void Start()
     {
-        camera = Camera.main;
-        playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
+        SetRandomHPEnemy();
+        //enemyhp = 100f;
 
+        playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
         UpdateEnemyHP();
     }
     private void Update()
@@ -46,6 +49,7 @@ public class EnemyMove : MonoBehaviour
             UpdateEnemyHP();
             if (enemyhp <= 0)
             {
+                AddScore(100);
                 ShackeCam(0.5f, 0.15f, 13);
                 enemyhp = 0;
                 Destroy(gameObject);
@@ -65,6 +69,18 @@ public class EnemyMove : MonoBehaviour
 
     private void ShackeCam(float _dur, float _str, int _vib)
     {
-        camera.DOShakePosition(_dur, _str, _vib);
+        Camera.main.DOShakePosition(_dur, _str, _vib);
+    }
+
+    private void AddScore(int _score)
+    {
+        playerData.playerScore += _score;
+    }
+
+    private void SetRandomHPEnemy()
+    {
+        var _hp = Random.Range(lowhp, highhp);
+
+        enemyhp = (int)_hp;
     }
 }

@@ -52,9 +52,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
-
-        playerData.current_attackPower = playerData.max_attackPower;
+        SettingGame();
         StartCoroutine(PlayerAction());
     }
 
@@ -62,9 +60,13 @@ public class PlayerController : MonoBehaviour
     {
         InputKey();
         CheckState();
-        //Debug.Log(transform.localEulerAngles.z);
-        //Debug.Log(transform.eulerAngles.z);
-        //Debug.Log(transform.rotation.z);
+    }
+
+    private void SettingGame()
+    {
+        playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
+        playerData.current_attackPower = playerData.max_attackPower;
+        playerData.playerScore = 0f;
     }
 
     #region EventTrigger
@@ -123,7 +125,6 @@ public class PlayerController : MonoBehaviour
     /// 플레이어의 행동 키를 입력받는 함수
     /// </summary>
     /// 
-
     private void InputKey()
     {
         if (isRightBtn == false && isLeftBtn == false)
@@ -307,7 +308,7 @@ public class PlayerController : MonoBehaviour
                     SpawnORInstantiate(rightupdiafireTrn);
                     break;
             }
-            
+
             yield return shootDelay;
         }
 
@@ -367,7 +368,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("GameOut");
         }
 
-        if(collision.CompareTag(ConstantManager.TAG_ITEM))
+        if (collision.CompareTag(ConstantManager.TAG_ITEM))
         {
             Destroy(collision.gameObject);
 

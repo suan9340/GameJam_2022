@@ -331,8 +331,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followTarget: {x: 0, y: 0}
   moveSpeed: 0.5
-  enemyhp: 100
+  highhp: 70
+  lowhp: 130
   textObj: {fileID: 1549962527}
+  enemyhp: 0
 --- !u!50 &2097468746018272468
 Rigidbody2D:
   serializedVersion: 4

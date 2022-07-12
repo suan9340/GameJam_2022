@@ -10,4 +10,5 @@ public class Player_data : ScriptableObject
     public float current_attackPower;
     public float max_attackPower;
     public float moveSpeed;
+    public float playerScore;
 }
