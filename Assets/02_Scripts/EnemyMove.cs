@@ -44,7 +44,7 @@ public class EnemyMove : MonoBehaviour
             if (enemyhp <= 0)
             {
                 enemyhp = 0;
-                gameObject.SetActive(false);
+                Destroy(gameObject);
             }
         }
     }

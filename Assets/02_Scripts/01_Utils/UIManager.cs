@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -24,8 +25,15 @@ public class UIManager : MonoBehaviour
     }
 
     #endregion
+    public static readonly WaitForSecondsRealtime readyDelay = new WaitForSecondsRealtime(1f);
 
     private bool isSettingChang = false;
+
+    [Header("게임 카운트다운 TEXT")] public Text countDownText;
+
+    [Header("설정창 UI")]
+    public GameObject mainSettngUI = null;
+
     private void Update()
     {
         InputKey();
@@ -44,9 +52,33 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OnClickSettingChang()
     {
-        GameManager.Instance.gameState = Game_State_Enum.isSetting;
-        Time.timeScale = 0f;
+        isSettingChang = !isSettingChang;
+        if (isSettingChang)
+        {
+            GameManager.Instance.gameState = Game_State_Enum.isSetting;
+            mainSettngUI.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            StartCoroutine(CountDownReadyGame());
+            mainSettngUI.SetActive(false);
+        }
     }
 
+    private IEnumerator CountDownReadyGame()
+    {
+        countDownText.text = $"3";
+        yield return readyDelay;
 
+        countDownText.text = $"2";
+        yield return readyDelay;
+
+        countDownText.text = $"1";
+        yield return readyDelay;
+
+        countDownText.text = $" ";
+
+        Time.timeScale = 1f;
+    }
 }
