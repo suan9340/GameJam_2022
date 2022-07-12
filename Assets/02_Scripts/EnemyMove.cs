@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 using UnityEngine.UI;
 
 public class EnemyMove : MonoBehaviour
@@ -14,8 +15,10 @@ public class EnemyMove : MonoBehaviour
     [Header("UI ฐüทร")]
     [SerializeField] private Text textObj = null;
 
+    private Camera camera;
     private void Start()
     {
+        camera = Camera.main;
         playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
 
         UpdateEnemyHP();
@@ -43,6 +46,7 @@ public class EnemyMove : MonoBehaviour
             UpdateEnemyHP();
             if (enemyhp <= 0)
             {
+                ShackeCam(0.5f, 0.15f, 13);
                 enemyhp = 0;
                 Destroy(gameObject);
             }
@@ -57,5 +61,10 @@ public class EnemyMove : MonoBehaviour
     private void UpdateEnemyHP()
     {
         textObj.text = $"{(int)enemyhp}";
+    }
+
+    private void ShackeCam(float _dur, float _str, int _vib)
+    {
+        camera.DOShakePosition(_dur, _str, _vib);
     }
 }

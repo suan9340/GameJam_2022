@@ -203,7 +203,6 @@ public class PlayerController : MonoBehaviour
             Debug.Log("АјАн");
             playerState = Player_State_Enum.Attacking;
         }
-
     }
 
 
@@ -246,28 +245,16 @@ public class PlayerController : MonoBehaviour
     private void LeftRotate()
     {
         if (playerData.current_attackPower <= 0) return;
-        //transform.Rotate(new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime);
 
-        transform.localEulerAngles += new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime;
-        //if (transform.localEulerAngles.z >= 0f && transform.localEulerAngles.z <= 180f)
-        //    transform.localEulerAngles += new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime;
-
-        //else
-        //    transform.localEulerAngles -= new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime;
+        //transform.localEulerAngles += new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime;
+        transform.eulerAngles += new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime;
     }
 
     private void RightRotate()
     {
         if (playerData.current_attackPower <= 0) return;
-        //transform.Rotate(new Vector3(0, 0, -1) * playerData.moveSpeed * Time.deltaTime);
-        transform.Rotate(new Vector3(0, 0, -1) * playerData.moveSpeed * Time.deltaTime);
 
-
-        //if (transform.localEulerAngles.z <= 0f && transform.localEulerAngles.z <= -180f)
-        //    transform.localEulerAngles -= new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime;
-
-        //else
-        //    transform.localEulerAngles += new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime;
+        transform.eulerAngles -= new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime;
     }
 
     private IEnumerator ShootReady()
@@ -326,6 +313,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.CompareTag(ConstantManager.TAG_ENEMY))
         {
+            GameManager.Instance.SettingGameState(Game_State_Enum.isDie);
+
             Debug.Log("GameOut");
         }
     }

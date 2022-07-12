@@ -40,5 +40,8 @@ public class GameManager : MonoBehaviour
         poolManager = FindObjectOfType<BulletPoolManager>();
     }
 
-
+    public void SettingGameState(Game_State_Enum _state)
+    {
+        gameState = _state;
+    }
 }

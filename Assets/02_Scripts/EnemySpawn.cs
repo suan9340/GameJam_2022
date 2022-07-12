@@ -7,9 +7,11 @@ public class EnemySpawn : MonoBehaviour
     public GameObject enemyObj;
 
     public static readonly WaitForSeconds enemyDelay = new WaitForSeconds(2f);
+    private Coroutine enm;
+
     void Start()
     {
-        StartCoroutine(ReadySpawnEnemy());
+        enm = StartCoroutine(ReadySpawnEnemy());
     }
 
     private IEnumerator ReadySpawnEnemy()
@@ -18,6 +20,13 @@ public class EnemySpawn : MonoBehaviour
 
         while (true)
         {
+            if (GameManager.Instance.gameState == Game_State_Enum.isDie)
+            {
+                Debug.Log("적 스폰은 그만!\n");
+                StopCoroutine(enm);
+
+                yield break;
+            }
             SpawnEnemy();
             yield return enemyDelay;
         }

@@ -58,7 +58,7 @@ public class UIManager : MonoBehaviour
         isSettingChang = !isSettingChang;
         if (isSettingChang)
         {
-            GameManager.Instance.gameState = Game_State_Enum.isSetting;
+            GameManager.Instance.SettingGameState(Game_State_Enum.isSetting);
             mainSettngUI.gameObject.SetActive(true);
             Time.timeScale = 0f;
         }
@@ -83,7 +83,9 @@ public class UIManager : MonoBehaviour
 
         countDownText.text = $" ";
 
-        isCount = false;    
+        GameManager.Instance.SettingGameState(Game_State_Enum.isPlaying);
+        isCount = false;
         Time.timeScale = 1f;
+
     }
 }
