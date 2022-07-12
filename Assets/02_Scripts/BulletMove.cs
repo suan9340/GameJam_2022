@@ -45,6 +45,6 @@ public class BulletMove : MonoBehaviour
     private void OnDisable()
     {
         transform.position = new Vector3(0, 0, 0);
-        transform.rotation = Quaternion.Euler(0, 0, 0);
+        transform.rotation = Quaternion.identity;
     }
 }

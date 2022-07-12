@@ -32,7 +32,17 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletObj = null;
 
     [Header("총알 위치")]
-    public Transform fireTrn = null;
+    public Transform frontfireTrn = null;
+    public Transform backfireTrn = null;
+    public Transform leftfireTrn = null;
+    public Transform rightfireTrn = null;
+    public Transform leftupdiafireTrn = null;
+    public Transform rightupdiafireTrn = null;
+    public Transform leftdowndiafireTrn = null;
+    public Transform rightdowndiafireTrn = null;
+
+    [Header("총알 아이템 먹은 횟수")]
+    public int num_gum = 0;
 
     [Header("공격력이 증가하는 속도")]
     public float upPower = 3f;
@@ -154,8 +164,6 @@ public class PlayerController : MonoBehaviour
             isShooting = false;
             isSPush = false;
         }
-
-
     }
 
 
@@ -261,25 +269,66 @@ public class PlayerController : MonoBehaviour
     {
         while (playerState == Player_State_Enum.Attacking)
         {
-            SpawnORInstantiate();
+            switch (num_gum)
+            {
+                case 0:
+                    SpawnORInstantiate(frontfireTrn);
+                    break;
+
+                case 1:
+                    SpawnORInstantiate(frontfireTrn);
+                    SpawnORInstantiate(backfireTrn);
+                    break;
+
+                case 2:
+                    SpawnORInstantiate(frontfireTrn);
+                    SpawnORInstantiate(backfireTrn);
+                    SpawnORInstantiate(rightfireTrn);
+                    SpawnORInstantiate(leftfireTrn);
+                    break;
+
+                case 3:
+                    SpawnORInstantiate(frontfireTrn);
+                    SpawnORInstantiate(backfireTrn);
+                    SpawnORInstantiate(rightfireTrn);
+                    SpawnORInstantiate(leftfireTrn);
+                    SpawnORInstantiate(leftupdiafireTrn);
+                    SpawnORInstantiate(rightdowndiafireTrn);
+                    break;
+
+                case 4:
+                    SpawnORInstantiate(frontfireTrn);
+                    SpawnORInstantiate(backfireTrn);
+                    SpawnORInstantiate(rightfireTrn);
+                    SpawnORInstantiate(leftfireTrn);
+                    SpawnORInstantiate(leftdowndiafireTrn);
+                    SpawnORInstantiate(rightdowndiafireTrn);
+                    SpawnORInstantiate(leftupdiafireTrn);
+                    SpawnORInstantiate(rightupdiafireTrn);
+                    break;
+            }
+            
             yield return shootDelay;
         }
 
     }
 
-    private void SpawnORInstantiate()
+    private void SpawnORInstantiate(Transform _posTrn)
     {
         GameObject _bullet = null;
         if (GameManager.Instance.poolManager.transform.childCount > 0)
         {
             _bullet = GameManager.Instance.poolManager.transform.GetChild(0).gameObject;
-            _bullet.transform.SetParent(fireTrn.transform, false);
-            _bullet.transform.position = fireTrn.position;
+            _bullet.transform.SetParent(frontfireTrn.transform, false);
+
+            _bullet.transform.position = _posTrn.position;
+            _bullet.transform.rotation = _posTrn.rotation;
+
             _bullet.SetActive(true);
         }
         else
         {
-            _bullet = Instantiate(bulletObj, fireTrn.position, transform.rotation);
+            _bullet = Instantiate(bulletObj, _posTrn.position, _posTrn.rotation);
         }
         if (_bullet != null)
         {
@@ -316,6 +365,13 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.SettingGameState(Game_State_Enum.isDie);
 
             Debug.Log("GameOut");
+        }
+
+        if(collision.CompareTag(ConstantManager.TAG_ITEM))
+        {
+            Destroy(collision.gameObject);
+
+            num_gum++;
         }
     }
 }
