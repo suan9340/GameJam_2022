@@ -41,6 +41,8 @@ public class EnemyMove : MonoBehaviour
     {
         if (collision.CompareTag(ConstantManager.TAG_BULLET))
         {
+            ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.enemyHit, transform.position);
+
             collision.GetComponent<BulletMove>().Despawn();
 
             Destroy(collision.gameObject);
@@ -49,6 +51,9 @@ public class EnemyMove : MonoBehaviour
             UpdateEnemyHP();
             if (enemyhp <= 0)
             {
+                ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.enmeyDie, transform.position);
+                ScreentHIt();
+                playerData.current_attackPower += 2f;
                 AddScore(100);
                 ShackeCam(0.5f, 0.15f, 13);
                 enemyhp = 0;
@@ -82,5 +87,10 @@ public class EnemyMove : MonoBehaviour
         var _hp = Random.Range(lowhp, highhp);
 
         enemyhp = (int)_hp;
+    }
+
+    private void ScreentHIt()
+    {
+        UIManager.Instance.HitScreen();
     }
 }

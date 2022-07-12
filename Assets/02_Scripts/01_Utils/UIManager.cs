@@ -32,11 +32,13 @@ public class UIManager : MonoBehaviour
     [Header("게임 카운트다운 TEXT")] public Text countDownText;
 
     [Header("설정창 UI")]
-    public Image mainSettngUI = null;
+    public Image mainSettngImage = null;
 
     [Header("물음표창 UI")]
-    public Image questionUI = null;
+    public Image questionImage = null;
 
+    [Header("적 죽였을 때 테두리 UI")]
+    public Image hitEnemyOutImage = null;
     private bool isCount = false;
 
     private void Update()
@@ -62,12 +64,12 @@ public class UIManager : MonoBehaviour
         if (isSettingChang)
         {
             GameManager.Instance.SettingGameState(Game_State_Enum.isSetting);
-            mainSettngUI.gameObject.SetActive(true);
+            mainSettngImage.gameObject.SetActive(true);
             Time.timeScale = 0f;
         }
         else
         {
-            mainSettngUI.gameObject.SetActive(false);
+            mainSettngImage.gameObject.SetActive(false);
             StartCoroutine(CountDownReadyGame());
         }
     }
@@ -90,5 +92,39 @@ public class UIManager : MonoBehaviour
         isCount = false;
         Time.timeScale = 1f;
 
+    }
+
+    public void HitScreen()
+    {
+        StartCoroutine(ScreenHit());
+    }
+
+    public IEnumerator ScreenHit()
+    {
+        hitEnemyOutImage.color = new Color(1, 1, 1, 1);
+        yield return new WaitForSeconds(0.1f);
+        hitEnemyOutImage.color = new Color(1, 1, 1, 0.4f);
+    }
+
+    /// <summary>
+    /// 상단의 ?를 눌렀을 때 보여주는 함수
+    /// </summary>
+    public void OnClickQuestion()
+    {
+        Debug.Log("qwe");
+        GameManager.Instance.SettingGameState(Game_State_Enum.isSetting);
+        questionImage.gameObject.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+
+    /// <summary>
+    /// ? 보기 닫기를 눌렀을 떄 보여주는 함수
+    /// </summary>
+    public void OnClickOutQuestion()
+    {
+        GameManager.Instance.SettingGameState(Game_State_Enum.isPlaying);
+        questionImage.gameObject.SetActive(false);
+        StartCoroutine(CountDownReadyGame());
     }
 }
