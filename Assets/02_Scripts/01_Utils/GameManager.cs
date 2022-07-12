@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    public Game_State_Enum gameState;
+
     public BulletPoolManager poolManager { get; private set; }
 
     public Vector2 MinPosition { get; private set; }
@@ -37,4 +39,6 @@ public class GameManager : MonoBehaviour
 
         poolManager = FindObjectOfType<BulletPoolManager>();
     }
+
+
 }

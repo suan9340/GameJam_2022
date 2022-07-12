@@ -24,4 +24,29 @@ public class UIManager : MonoBehaviour
     }
 
     #endregion
+
+    private bool isSettingChang = false;
+    private void Update()
+    {
+        InputKey();
+    }
+
+    private void InputKey()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnClickSettingChang();
+        }
+    }
+
+    /// <summary>
+    /// 화면상에 있는 설정창 눌렀을 때 or ESC 눌렀을 때
+    /// </summary>
+    public void OnClickSettingChang()
+    {
+        GameManager.Instance.gameState = Game_State_Enum.isSetting;
+        Time.timeScale = 0f;
+    }
+
+
 }
