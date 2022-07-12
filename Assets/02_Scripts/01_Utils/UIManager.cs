@@ -34,6 +34,9 @@ public class UIManager : MonoBehaviour
     [Header("설정창 UI")]
     public Image mainSettngUI = null;
 
+    [Header("물음표창 UI")]
+    public Image questionUI = null;
+
     private bool isCount = false;
 
     private void Update()
