@@ -36,7 +36,7 @@ public class BulletMove : MonoBehaviour
         }
     }
 
-    private void Despawn()
+    public void Despawn()
     {
         transform.SetParent(GameManager.Instance.poolManager.transform, false);
         gameObject.SetActive(false);

@@ -35,6 +35,8 @@ public class EnemyMove : MonoBehaviour
     {
         if (collision.CompareTag(ConstantManager.TAG_BULLET))
         {
+            collision.GetComponent<BulletMove>().Despawn();
+
             Destroy(collision.gameObject);
             enemyhp -= playerData.current_attackPower;
 
