@@ -43,7 +43,11 @@ public class OptionCtrl : MonoBehaviour
 
     public void OnClickSOnOff()
     {
-        AudioListener.volume = AudioListener.volume == 0 ? 1 : 0;   
+    }
+
+    public void SoundOption()
+    {
+
     }
 
 
