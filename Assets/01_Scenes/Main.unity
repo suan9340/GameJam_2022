@@ -6555,6 +6555,7 @@ GameObject:
   - component: {fileID: 770857035}
   - component: {fileID: 770857037}
   - component: {fileID: 770857036}
+  - component: {fileID: 770857038}
   m_Layer: 5
   m_Name: Text (Score)
   m_TagString: Untagged
@@ -6623,6 +6624,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770857034}
   m_CullTransparentMesh: 1
+--- !u!114 &770857038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770857034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa46b5221600f94aac5ce6074d4b53d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 770857036}
 --- !u!1 &775456185
 GameObject:
   m_ObjectHideFlags: 0
@@ -9045,7 +9059,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794051540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.404, z: 0}
+  m_LocalPosition: {x: 0, y: 0.273, z: 0}
   m_LocalScale: {x: 0.11116, y: 0.32892, z: 0.6}
   m_Children: []
   m_Father: {fileID: 2075560842}
