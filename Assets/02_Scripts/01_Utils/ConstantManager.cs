@@ -8,4 +8,7 @@ public static class ConstantManager
 
     public const string INPUT_HO = "Horizontal";
     public const string INPUT_VE = "Vertical";
+
+    public const string SCENCE_MAIN = "Main";
+    public const string SCENCE_MENU = "Menu";
 }
