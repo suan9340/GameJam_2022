@@ -23,6 +23,6 @@ public class ScoreUI : MonoBehaviour
 
     private void UpdateUI()
     {
-        scoreText.text = $"{playerData.playerScore}";
+        scoreText.text = $"{playerData.score}";
     }
 }

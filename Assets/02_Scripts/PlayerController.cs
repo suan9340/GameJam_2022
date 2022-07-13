@@ -23,11 +23,6 @@ public class PlayerController : MonoBehaviour
     private bool isSPush = false;
     private bool isSTPush = false;
 
-    Coroutine leftCor = null;
-    Coroutine rightCor = null;
-    Coroutine ShootCor = null;
-    Coroutine StopCor = null;
-
     [Header("ÃÑ¾Ë ÇÁ¸®ÆÕ")]
     public GameObject bulletObj = null;
 
@@ -58,15 +53,20 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.gameState == Game_State_Enum.isDie)
+        {
+            playerState = Player_State_Enum.Stoping;
+            return;
+        }
+
         InputKey();
         CheckState();
     }
-
     private void SettingGame()
     {
         playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
         playerData.current_attackPower = playerData.max_attackPower;
-        playerData.playerScore = 0f;
+        playerData.score = 0f;
     }
 
     #region EventTrigger
@@ -255,7 +255,6 @@ public class PlayerController : MonoBehaviour
     {
         if (playerData.current_attackPower <= 0) return;
 
-        //transform.localEulerAngles += new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime;
         transform.eulerAngles += new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime;
     }
 
@@ -359,12 +358,15 @@ public class PlayerController : MonoBehaviour
         playerData.current_attackPower -= downPower * Time.deltaTime;
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(ConstantManager.TAG_ENEMY))
         {
+            ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.playerDie, transform.position);
             GameManager.Instance.SettingGameState(Game_State_Enum.isDie);
 
+            UIManager.Instance.GameOver();
             Debug.Log("GameOut");
         }
 

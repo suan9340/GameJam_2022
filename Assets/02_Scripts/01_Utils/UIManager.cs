@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using DG.Tweening;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -40,6 +42,18 @@ public class UIManager : MonoBehaviour
     [Header("적 죽였을 때 테두리 UI")]
     public Image hitEnemyOutImage = null;
     private bool isCount = false;
+
+    [Header("---------인게임 오브젝트---------")]
+    public GameObject ingameObj = null;
+
+    [Header("---------게임오버 오브젝트---------")]
+    public GameObject gameOverObj = null;
+    public Ease ease;
+
+    private void Start()
+    {
+
+    }
 
     private void Update()
     {
@@ -127,4 +141,31 @@ public class UIManager : MonoBehaviour
         questionImage.gameObject.SetActive(false);
         StartCoroutine(CountDownReadyGame());
     }
+
+    /// <summary>
+    /// 게임 종료됬을 때 이벤트
+    /// </summary>
+    public void GameOver()
+    {
+        ingameObj.gameObject.transform.DOScale(new Vector3(1.4f, 1.4f, 1f), 3f);
+
+        Invoke(nameof(GameOverChangShow), 1f);
+    }
+
+    private void GameOverChangShow()
+    {
+        gameOverObj.gameObject.SetActive(true);
+        gameOverObj.gameObject.transform.DOScale(new Vector3(1, 1, 1), 2f).SetEase(ease);
+    }
+
+    public void OnClickRestartGame()
+    {
+        SceneManager.LoadScene(ConstantManager.SCENCE_MAIN);
+    }
+
+    public void OnClickGoToMenu()
+    {
+        SceneManager.LoadScene(ConstantManager.SCENCE_MENU);
+    }
+
 }
