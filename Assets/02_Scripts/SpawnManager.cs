@@ -31,7 +31,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject bulletitemObj;
 
     public static readonly WaitForSeconds enemyDelay = new WaitForSeconds(1.6f);
-    public static readonly WaitForSeconds itemDelay = new WaitForSeconds(10f);
+    public static readonly WaitForSeconds itemDelay = new WaitForSeconds(14f);
 
 
     private Coroutine enemyCor;
@@ -67,7 +67,7 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
-            while (playerData.score < 300) yield return null;
+            while (playerData.score < 400) yield return null;
 
             if (GameManager.Instance.gameState == Game_State_Enum.isDie)
             {

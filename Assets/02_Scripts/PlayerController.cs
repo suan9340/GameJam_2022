@@ -149,11 +149,9 @@ public class PlayerController : MonoBehaviour
             RightUp();
         }
 
-
         if (isRightBtn && isLeftBtn)
         {
             if (isShooting) return;
-
 
             isShooting = true;
         }

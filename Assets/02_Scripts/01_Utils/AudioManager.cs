@@ -20,7 +20,6 @@ public class VFXInfo
 
 public class AudioManager : MonoBehaviour
 {
-
     #region Singleton
     private static AudioManager _instance = null;
 
@@ -61,8 +60,6 @@ public class AudioManager : MonoBehaviour
 
     void Update()
     {
-        BGMSoundSlider();
-
         if (!BGM.isPlaying)
         {
             RandomPlay();
@@ -70,8 +67,16 @@ public class AudioManager : MonoBehaviour
     }
     public void MasterSoundSlider()
     {
-        BGM.volume = MasterSlider.value;
-        FX.volume = MasterSlider.value;
+        //BGM.volume = MasterSlider.value;
+        ////FX.volume = MasterSlider.value;
+
+        //backVol = BGMSlider.value;
+        ////backVol = FXSlider.value;
+        //PlayerPrefs.SetFloat("backvol", backVol);
+
+
+        BGM.volume = BGMSlider.value;
+        backVol = BGMSlider.value;
         PlayerPrefs.SetFloat("backvol", backVol);
     }
 
