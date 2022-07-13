@@ -36,6 +36,8 @@ public class EnemyMove : MonoBehaviour
     }
     private void Update()
     {
+        if (GameManager.Instance.gameState == Game_State_Enum.isSetting) return;
+
         if (GameManager.Instance.gameState == Game_State_Enum.isDie)
         {
             IsGameOver();

@@ -64,6 +64,10 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(3.5f);
+
+            while (GameManager.Instance.gameState == Game_State_Enum.isSetting) yield return null;
+
             if (GameManager.Instance.gameState == Game_State_Enum.isDie)
             {
                 Debug.Log("적1 스폰은 그만!\n");
@@ -81,6 +85,8 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
+            while (GameManager.Instance.gameState == Game_State_Enum.isSetting) yield return null;
+
             while (playerData.score < enemyinfos[1].outScore) yield return null;
 
             if (GameManager.Instance.gameState == Game_State_Enum.isDie)
@@ -101,6 +107,8 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
+            while (GameManager.Instance.gameState == Game_State_Enum.isSetting) yield return null;
+
             while (playerData.score < enemyinfos[2].outScore) yield return null;
 
             if (GameManager.Instance.gameState == Game_State_Enum.isDie)
@@ -121,6 +129,8 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
+            while (GameManager.Instance.gameState == Game_State_Enum.isSetting) yield return null;
+
             while (playerData.score < iteminfos[0].outScore) yield return null;
 
             if (GameManager.Instance.gameState == Game_State_Enum.isDie)

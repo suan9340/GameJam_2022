@@ -52,7 +52,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-
+        StartCoroutine(CountDownReadyGame());
     }
 
     private void Update()
@@ -74,18 +74,19 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OnClickSettingChang()
     {
+        Debug.Log("qwe");
         isSettingChang = !isSettingChang;
         if (isSettingChang)
         {
             GameManager.Instance.SettingGameState(Game_State_Enum.isSetting);
             mainSettngImage.gameObject.SetActive(true);
             mainSettngImage.rectTransform.DOAnchorPosY(0, 0.2f).SetEase(Ease.OutCirc).SetUpdate(true);
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
         }
         else
         {
             mainSettngImage.rectTransform.DOAnchorPosY(2048f, 0.2f).SetEase(Ease.OutCirc).SetUpdate(true);
-            //mainSettngImage.gameObject.SetActive(false);
+            mainSettngImage.gameObject.SetActive(false);
             StartCoroutine(CountDownReadyGame());
         }
     }
@@ -106,8 +107,6 @@ public class UIManager : MonoBehaviour
 
         GameManager.Instance.SettingGameState(Game_State_Enum.isPlaying);
         isCount = false;
-        Time.timeScale = 1f;
-
     }
 
     public void HitScreen()
@@ -149,7 +148,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void GameOver()
     {
-        ingameObj.gameObject.transform.DOScale(new Vector3(1.4f, 1.4f, 1f), 3f);
+        ingameObj.gameObject.transform.DOScale(new Vector3(1.6f, 1.6f, 1f), 3f);
 
         Invoke(nameof(GameOverChangShow), 1f);
     }
