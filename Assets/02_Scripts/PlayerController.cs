@@ -370,5 +370,10 @@ public class PlayerController : MonoBehaviour
             UIManager.Instance.GameOver();
             Debug.Log("GameOut");
         }
+
+        if (collision.CompareTag(ConstantManager.TAG_ITEM))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }

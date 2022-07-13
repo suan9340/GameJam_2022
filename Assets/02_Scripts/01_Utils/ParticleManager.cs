@@ -1,10 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// 파티클을 관리한다 
-// 원하는 위치에 만들어주고, 해당 파티클을 강제로 삭제도 해준다!
-// - 편의 기능
-//    싱글톤, 파티클 프리펩 등을 갖고 있다!
 public class ParticleManager : MonoBehaviour
 {
     #region SingleTon
@@ -27,10 +23,6 @@ public class ParticleManager : MonoBehaviour
     }
 
     #endregion
-    private void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
 
     #region 인터페이스
 
@@ -90,6 +82,6 @@ public class ParticleManager : MonoBehaviour
         return 0;
     }
 
-    private static Dictionary<ParticleType, GameObject> particleDic = new Dictionary<ParticleType, GameObject>();
+    private Dictionary<ParticleType, GameObject> particleDic = new Dictionary<ParticleType, GameObject>();
     #endregion
 }

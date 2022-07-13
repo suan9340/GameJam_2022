@@ -9,7 +9,7 @@ public class UICtrl : MonoBehaviour
 {
     private void Start()
     {
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 200;
     }
     public void OnClickStartButton()
     {

@@ -8,6 +8,8 @@ public class ItemMove : MonoBehaviour
     [SerializeField] private Vector2 followTarget = Vector2.zero;
     [SerializeField] private float moveSpeed = 1f;
 
+    private bool isGameOver = false;
+
     private void Start()
     {
         playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
@@ -15,7 +17,10 @@ public class ItemMove : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.gameState == Game_State_Enum.isDie) return;
+        if (GameManager.Instance.gameState == Game_State_Enum.isDie)
+        {
+            IsGameOver();
+        }
 
         Move();
 
@@ -40,5 +45,19 @@ public class ItemMove : MonoBehaviour
             if (playerData.playerlevel == 4) return;
             playerData.playerlevel++;
         }
+    }
+
+    private void IsGameOver()
+    {
+        if (isGameOver) return;
+
+        isGameOver = true;
+        Invoke(nameof(ItemGameOver), 1.2f);
+    }
+
+    private void ItemGameOver()
+    {
+        ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.itemEat, transform.position);
+        Destroy(gameObject);
     }
 }

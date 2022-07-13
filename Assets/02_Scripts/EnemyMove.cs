@@ -23,6 +23,11 @@ public class EnemyMove : MonoBehaviour
 
     private bool isGameOver = false;
 
+    private void Awake()
+    {
+        FollowTextUI();
+    }
+
     private void Start()
     {
         SetRandomHPEnemy();
@@ -63,7 +68,7 @@ public class EnemyMove : MonoBehaviour
                 ScreentHIt();
                 playerData.current_attackPower += 2f;
                 AddScore(score);
-                ShackeCam(0.5f, 0.15f, 13);
+                ShackeCam(0.4f, 0.15f, 13);
                 enemyhp = 0;
                 Destroy(gameObject);
             }
@@ -109,6 +114,7 @@ public class EnemyMove : MonoBehaviour
         var _hp = Random.Range(lowhp, highhp);
 
         enemyhp = (int)_hp;
+        score = (int)_hp;
     }
 
     private void ScreentHIt()
