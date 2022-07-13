@@ -49,13 +49,13 @@ public class AudioManager : MonoBehaviour
     [Header("Infos")]
     public List<MusicInfo> musicInfo = new List<MusicInfo>();
     public List<VFXInfo> vFXInfos = new List<VFXInfo>();
-    private float backVol = 1;
 
-    void Start()
+    private float backVol = 1;
+    private float vfxVol = 1;
+
+    private void Start()
     {
-        backVol = PlayerPrefs.GetFloat("backvol", 1f);
-        BGMSlider.value = backVol;
-        BGM.volume = BGMSlider.value;
+        SetVolume();
     }
 
     void Update()
@@ -65,6 +65,16 @@ public class AudioManager : MonoBehaviour
             RandomPlay();
         }
     }
+
+    private void SetVolume()
+    {
+        backVol = PlayerPrefs.GetFloat(ConstantManager.VOL_BACK, 1f);
+        BGMSlider.value = backVol;
+
+        vfxVol = PlayerPrefs.GetFloat(ConstantManager.VOL_VFX, 1f);
+        FXSlider.value = vfxVol;
+    }
+
     public void MasterSoundSlider()
     {
         //BGM.volume = MasterSlider.value;
@@ -74,24 +84,28 @@ public class AudioManager : MonoBehaviour
         ////backVol = FXSlider.value;
         //PlayerPrefs.SetFloat("backvol", backVol);
 
+        BGM.volume = MasterSlider.value;
+        FX.volume = MasterSlider.value;
 
-        BGM.volume = BGMSlider.value;
-        backVol = BGMSlider.value;
-        PlayerPrefs.SetFloat("backvol", backVol);
+        backVol = MasterSlider.value;
+        vfxVol = MasterSlider.value;
+
+        PlayerPrefs.SetFloat(ConstantManager.VOL_BACK, backVol);
+        PlayerPrefs.SetFloat(ConstantManager.VOL_VFX, vfxVol);
     }
 
     public void BGMSoundSlider()
     {
         BGM.volume = BGMSlider.value;
         backVol = BGMSlider.value;
-        PlayerPrefs.SetFloat("backvol", backVol);
+        PlayerPrefs.SetFloat(ConstantManager.VOL_BACK, backVol);
 
     }
     public void FXSoundSlider()
     {
         FX.volume = FXSlider.value;
-        backVol = FXSlider.value;
-        PlayerPrefs.SetFloat("backvol", backVol);
+        vfxVol = FXSlider.value;
+        PlayerPrefs.SetFloat(ConstantManager.VOL_VFX, vfxVol);
     }
 
     public void RandomPlay()
