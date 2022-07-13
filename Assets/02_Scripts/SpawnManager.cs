@@ -44,6 +44,7 @@ public class SpawnManager : MonoBehaviour
         playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
 
         enemyCor = StartCoroutine(ReadySpawnEnemy());
+        itemCor = StartCoroutine(ReadyItemSpawn());
     }
 
     private IEnumerator ReadySpawnEnemy()
@@ -66,10 +67,12 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
-            if(GameManager.Instance.gameState == Game_State_Enum.isDie)
+            while (playerData.score < 500) yield return null;
+
+            if (GameManager.Instance.gameState == Game_State_Enum.isDie)
             {
                 Debug.Log("아이템 스폰은 그만!\n");
-                
+                StopCoroutine(itemCor);
             }
             Debug.Log("아이템 스폰 시작");
 

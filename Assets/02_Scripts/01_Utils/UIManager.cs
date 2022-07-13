@@ -160,12 +160,12 @@ public class UIManager : MonoBehaviour
 
     public void OnClickRestartGame()
     {
-        SceneManager.LoadScene(ConstantManager.SCENCE_MAIN);
+        SceneManager.LoadScene(1);
     }
 
     public void OnClickGoToMenu()
     {
-        SceneManager.LoadScene(ConstantManager.SCENCE_MENU);
+        SceneManager.LoadScene(0);
     }
 
 }
