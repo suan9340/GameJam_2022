@@ -7,35 +7,40 @@ using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioMixer BGMMixer;
-    public AudioMixer MasterMixer;
-    public AudioMixer SFXMixer;
+    AudioSource AS;
     public Slider BGMSlider;
-    public Slider MasterSlider;
-    public Slider SFXSlider;
-
-  
-    public void MasterControl()
+    public List<AudioClip> music = new List<AudioClip>();
+    private float backvol = 1;
+    void Start()
     {
-        float sound = MasterSlider.value;
-        if (sound == -40f) MasterMixer.SetFloat("Master", -80);
-        else MasterMixer.SetFloat("Master", sound);
-    
-    }  
-
-    public void BGMControl()
-    {
-        float sound = BGMSlider.value;
-        if (sound == -40f) BGMMixer.SetFloat("BGM", -80);
-        else BGMMixer.SetFloat("BGM", sound);
+        AS = this.GetComponent<AudioSource>();
+            
+        backvol = PlayerPrefs.GetFloat("backvol", 1f);
+        BGMSlider.value = backvol;
+        AS.volume = BGMSlider.value;
     }
 
-    
-    public void SFXControl()
+    void Update()
     {
-        float sound = SFXSlider.value;
-        if (sound == -40f) SFXMixer.SetFloat("SFX", -80);
-        else SFXMixer.SetFloat("SFX", sound);
-    
+        SoundSlider();
+
+        if(!AS.isPlaying)
+        {
+            AS.Play();
+        }
+    }
+
+    public void SoundSlider()
+    {
+        AS.volume = BGMSlider.value;
+        backvol = BGMSlider.value;
+        PlayerPrefs.SetFloat("backvol", backvol);
+
+    }
+
+    public void RandomPlay()
+    {
+        AS.clip = music[Random.Range(0, music.Count)];
+        AS.Play();
     }
 }
