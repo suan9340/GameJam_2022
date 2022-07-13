@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     private Player_data playerData = null;
     public Player_State_Enum playerState;
 
-    public static readonly WaitForSeconds shootDelay = new WaitForSeconds(0.2f);
+    public static readonly WaitForSeconds shootDelay = new WaitForSeconds(0.16f);
     public static readonly WaitForSeconds powerDelay = new WaitForSeconds(0.06f);
     public static readonly WaitForSeconds playerDelay = new WaitForSeconds(0.1f);
 
