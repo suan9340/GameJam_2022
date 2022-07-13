@@ -52,6 +52,7 @@ public class AudioManager : MonoBehaviour
 
     private float backVol = 1;
     private float vfxVol = 1;
+    private float masterVol = 1;
 
     private void Start()
     {
@@ -73,25 +74,24 @@ public class AudioManager : MonoBehaviour
 
         vfxVol = PlayerPrefs.GetFloat(ConstantManager.VOL_VFX, 1f);
         FXSlider.value = vfxVol;
+
+        masterVol = PlayerPrefs.GetFloat(ConstantManager.VOL_Master, 1);
+        MasterSlider.value = masterVol;
+
     }
 
     public void MasterSoundSlider()
     {
-        //BGM.volume = MasterSlider.value;
-        //FX.volume = MasterSlider.value;
-
-        //backVol = BGMSlider.value;
-        //backVol = FXSlider.value;
-        //PlayerPrefs.SetFloat("backvol", backVol);
 
         BGM.volume = MasterSlider.value;
         FX.volume = MasterSlider.value;
+        masterVol = MasterSlider.value;
 
-       // backVol = MasterSlider.value;
-     //   vfxVol = MasterSlider.value;
+        // backVol = MasterSlider.value;
+        //   vfxVol = MasterSlider.value;
 
-        PlayerPrefs.SetFloat(ConstantManager.VOL_BACK, backVol);
-        PlayerPrefs.SetFloat(ConstantManager.VOL_VFX, vfxVol);
+        PlayerPrefs.SetFloat(ConstantManager.VOL_Master, masterVol);
+  
     }
 
     public void BGMSoundSlider()
