@@ -78,17 +78,17 @@ public class AudioManager : MonoBehaviour
     public void MasterSoundSlider()
     {
         //BGM.volume = MasterSlider.value;
-        ////FX.volume = MasterSlider.value;
+        //FX.volume = MasterSlider.value;
 
         //backVol = BGMSlider.value;
-        ////backVol = FXSlider.value;
+        //backVol = FXSlider.value;
         //PlayerPrefs.SetFloat("backvol", backVol);
 
         BGM.volume = MasterSlider.value;
         FX.volume = MasterSlider.value;
 
-        backVol = MasterSlider.value;
-        vfxVol = MasterSlider.value;
+       // backVol = MasterSlider.value;
+     //   vfxVol = MasterSlider.value;
 
         PlayerPrefs.SetFloat(ConstantManager.VOL_BACK, backVol);
         PlayerPrefs.SetFloat(ConstantManager.VOL_VFX, vfxVol);
