@@ -306,6 +306,7 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
+            AudioManager.Instance.ShootGun();
             yield return shootDelay;
         }
 

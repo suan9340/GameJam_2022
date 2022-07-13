@@ -1,14 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using UnityEngine.Audio;
 using UnityEngine.UI;
+
+[System.Serializable]
+public class MusicInfo
+{
+    public string name;
+    public AudioClip clip;
+}
+
+[System.Serializable]
+public class VFXInfo
+{
+    public string name;
+    public AudioClip clip;
+}
 
 public class AudioManager : MonoBehaviour
 {
 
     #region Singleton
+    private static AudioManager _instance = null;
+
     public static AudioManager Instance
     {
         get
@@ -24,23 +39,21 @@ public class AudioManager : MonoBehaviour
             return _instance;
         }
     }
-    private static AudioManager _instance = null;
+    #endregion
 
     public AudioSource BGM;
     public AudioSource FX;
     public Slider MasterSlider;
     public Slider BGMSlider;
     public Slider FXSlider;
-    public List<AudioClip> music = new List<AudioClip>();
-    public List<AudioClip> vfx = new List<AudioClip>();
+
+    [Header("Infos")]
+    public List<MusicInfo> musicInfo = new List<MusicInfo>();
+    public List<VFXInfo> vFXInfos = new List<VFXInfo>();
     private float backVol = 1;
-    #endregion
-
-
 
     void Start()
     {
-            
         backVol = PlayerPrefs.GetFloat("backvol", 1f);
         BGMSlider.value = backVol;
         BGM.volume = BGMSlider.value;
@@ -50,7 +63,7 @@ public class AudioManager : MonoBehaviour
     {
         BGMSoundSlider();
 
-        if(!BGM.isPlaying)
+        if (!BGM.isPlaying)
         {
             RandomPlay();
         }
@@ -75,49 +88,48 @@ public class AudioManager : MonoBehaviour
         backVol = FXSlider.value;
         PlayerPrefs.SetFloat("backvol", backVol);
     }
+
     public void RandomPlay()
     {
-        BGM.clip = music[Random.Range(0, music.Count)];
+        //BGM.clip = music[Random.Range(0, music.Count)];
+        BGM.clip = musicInfo[Random.Range(0, musicInfo.Count)].clip;
         BGM.Play();
     }
 
 
     // 오디오 함수에 들어가 있으니까 필요한곳에 참조해서  FX.Play();[유니티 내장 함수] 하면 실행됨 
-    public void EnemyDieSound()
+    public void EnemyDie()
     {
-        FX.clip = vfx[0];
+        FX.clip = vFXInfos[0].clip;
         FX.Play();
     }
 
 
-    public void GunSound()
+    public void ShootGun()
     {
-        FX.clip = vfx[1];
-        FX.Play();
-        Debug.Log("뿡뿡띠");
-    }
-
-    public void PlayerDieSound()
-    {
-        FX.clip = vfx[2];
-        FX.Play();
-    }
-    
-    public void ItemAcquisition()
-    {
-        FX.clip = vfx[3];
+        FX.clip = vFXInfos[1].clip;
         FX.Play();
     }
 
-    public void OnClickButton()
+    public void PlayerDie()
     {
-        FX.clip = vfx[4];
+        FX.clip = vFXInfos[2].clip;
         FX.Play();
     }
 
-    
+    public void ItemEat()
+    {
+        FX.clip = vFXInfos[3].clip;
+        FX.Play();
+    }
+
+    public void ClickButton()
+    {
+        FX.clip = vFXInfos[4].clip;
+        FX.Play();
+    }
 
 }
-   
+
 
 

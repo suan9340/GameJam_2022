@@ -27,6 +27,7 @@ public class ItemMove : MonoBehaviour
     {
         if (collision.CompareTag(ConstantManager.TAG_BULLET))
         {
+            AudioManager.Instance.ItemEat();
             ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.itemEat, transform.position);
 
             collision.GetComponent<BulletMove>().Despawn();

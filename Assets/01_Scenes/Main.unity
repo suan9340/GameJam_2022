@@ -3754,7 +3754,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 795669847}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_MinValue: -40
+  m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -3763,7 +3763,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1243349502}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: SFXControl
+        m_MethodName: FXSoundSlider
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4307,7 +4307,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 381764713}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_MinValue: -40
+  m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -4626,6 +4626,7 @@ GameObject:
   - component: {fileID: 1243349503}
   - component: {fileID: 1243349502}
   - component: {fileID: 1243349504}
+  - component: {fileID: 1243349505}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -4645,10 +4646,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e0e6d42d373c4344ade2feabd302fff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGMSlider: {fileID: 1347657421}
+  BGM: {fileID: 1243349504}
+  FX: {fileID: 1243349505}
   MasterSlider: {fileID: 1146361196}
-  FXSlider: {fileID: 0}
-  music: []
+  BGMSlider: {fileID: 1347657421}
+  FXSlider: {fileID: 981492043}
+  musicInfo:
+  - name: 
+    clip: {fileID: 8300000, guid: d7a414cc2aeb37940a058475764676ea, type: 3}
+  - name: 
+    clip: {fileID: 8300000, guid: a6abd569923fd7641813dc95361a0dad, type: 3}
+  - name: 
+    clip: {fileID: 8300000, guid: b739f59419151914cb68855b14e60ba3, type: 3}
+  - name: 
+    clip: {fileID: 8300000, guid: fa9dbd860a94bd34182c1be4db3470ce, type: 3}
+  - name: 
+    clip: {fileID: 8300000, guid: 7f2c228441479d94b9053ee991aa9fe2, type: 3}
+  - name: 
+    clip: {fileID: 8300000, guid: 5dae943d9eb4e244484d1602873ebfcb, type: 3}
+  vFXInfos:
+  - name: "\uC801 \uC0AC\uB9DD \uC0AC\uC6B4\uB4DC"
+    clip: {fileID: 8300000, guid: e0a05054ef7695545a313df7045ffebe, type: 3}
+  - name: "\uD50C\uB808\uC774\uC5B4 \uCD1D\uC18C\uB9AC \uC0AC\uC6B4"
+    clip: {fileID: 8300000, guid: a9935ea50e783e1468fc721860552221, type: 3}
+  - name: "\uD50C\uB808\uC774\uC5B4 \uC8FD\uC5C8\uC744 \uB54C \uC0AC\uC6B4\uB4DC"
+    clip: {fileID: 0}
+  - name: "\uC544\uC774\uD15C \uD68D\uB4DD \uC0AC\uC6B4\uB4DC"
+    clip: {fileID: 8300000, guid: b7bdb1cb8333d2849bbab2c406762326, type: 3}
+  - name: "\uBC84\uD2BC \uD074\uB9AD \uC0AC\uC6B4\uB4DC"
+    clip: {fileID: 0}
 --- !u!4 &1243349503
 Transform:
   m_ObjectHideFlags: 0
@@ -4674,6 +4700,102 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1261785208087618633, guid: 1ec69b3b62bfb38429a149f4ea145815, type: 2}
   m_audioClip: {fileID: 8300000, guid: 71fa294a2c0e51f428e2bbf49594ec17, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1243349505
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243349501}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -5134,7 +5256,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 108229872}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_MinValue: -40
+  m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -5143,7 +5265,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1243349502}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: BGMControl
+        m_MethodName: BGMSoundSlider
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

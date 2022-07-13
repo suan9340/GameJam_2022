@@ -57,6 +57,7 @@ public class EnemyMove : MonoBehaviour
             UpdateEnemyHP();
             if (enemyhp <= 0)
             {
+                AudioManager.Instance.EnemyDie();
                 ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.enmeyDie, transform.position);
                 ScreentHIt();
                 playerData.current_attackPower += 2f;

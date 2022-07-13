@@ -67,7 +67,7 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
-            while (playerData.score < 500) yield return null;
+            while (playerData.score < 300) yield return null;
 
             if (GameManager.Instance.gameState == Game_State_Enum.isDie)
             {
