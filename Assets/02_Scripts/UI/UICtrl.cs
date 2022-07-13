@@ -11,9 +11,13 @@ public class UICtrl : MonoBehaviour
     {
         Application.targetFrameRate = 60;
     }
-
     public void OnClickStartButton()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void OnClickExitButton()
+    {
+        Application.Quit();
     }
 }
