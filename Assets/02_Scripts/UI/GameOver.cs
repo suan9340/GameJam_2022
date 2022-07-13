@@ -44,6 +44,12 @@ public class GameOver : MonoBehaviour
         ConnectUI();
     }
 
+    private void OnDisable()
+    {
+        playerData.score = 0;
+        playerData.playerlevel = 0;
+    }
+
     private void ConnectUI()
     {
         CheckHighScore();
@@ -84,7 +90,7 @@ public class GameOver : MonoBehaviour
         {
             if (currentTime <= 0)
             {
-                UIManager.Instance.OnClickRestartGame();
+                UIManager.Instance.OnClickGoToMenu();
                 yield break;
             }
 

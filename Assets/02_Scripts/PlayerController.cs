@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
         InputKey();
         CheckState();
     }
+
     private void SettingGame()
     {
         playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
