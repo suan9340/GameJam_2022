@@ -18,6 +18,8 @@ public class EnemyMove : MonoBehaviour
 
     public float enemyhp;
 
+    private bool isGameOver = false;
+
     private void Start()
     {
         SetRandomHPEnemy();
@@ -28,6 +30,11 @@ public class EnemyMove : MonoBehaviour
     }
     private void Update()
     {
+        if (GameManager.Instance.gameState == Game_State_Enum.isDie)
+        {
+            IsGameOver();
+        }
+
         Move();
         FollowTextUI();
     }
@@ -54,12 +61,26 @@ public class EnemyMove : MonoBehaviour
                 ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.enmeyDie, transform.position);
                 ScreentHIt();
                 playerData.current_attackPower += 2f;
-                AddScore(100);
+                AddScore(70);
                 ShackeCam(0.5f, 0.15f, 13);
                 enemyhp = 0;
                 Destroy(gameObject);
             }
         }
+    }
+
+    private void IsGameOver()
+    {
+        if (isGameOver) return;
+
+        isGameOver = true;
+        Invoke(nameof(EnemyGameOver), 1.2f);
+    }
+
+    private void EnemyGameOver()
+    {
+        ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.enmeyDie, transform.position);
+        Destroy(gameObject);
     }
 
     private void FollowTextUI()
@@ -79,7 +100,7 @@ public class EnemyMove : MonoBehaviour
 
     private void AddScore(int _score)
     {
-        playerData.playerScore += _score;
+        playerData.score += _score;
     }
 
     private void SetRandomHPEnemy()
