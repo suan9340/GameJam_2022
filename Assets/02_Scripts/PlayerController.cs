@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
         InputKey();
         CheckState();
     }
+
     private void SettingGame()
     {
         playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
@@ -205,7 +206,7 @@ public class PlayerController : MonoBehaviour
             if (isSPush) return;
             isSPush = true;
 
-            //Debug.Log("공격");
+            Debug.Log("공격중");
             playerState = Player_State_Enum.Attacking;
         }
     }

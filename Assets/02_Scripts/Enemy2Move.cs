@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 using UnityEngine.UI;
+using DG.Tweening;
 
-public class EnemyMove : MonoBehaviour
+public class Enemy2Move : MonoBehaviour
 {
     private Player_data playerData;
 
     [SerializeField] private Vector2 followTarget = Vector2.zero;
     [SerializeField] private float moveSpeed = 1f;
-    [Header("최고 체력")][SerializeField] private float highhp = 10f;
+    [Header("최고 체력")][SerializeField] private float highhp = 100f;
     [Header("최악 체력")][SerializeField] private float lowhp = 10f;
 
     [Header("UI 관련")]
@@ -18,6 +18,9 @@ public class EnemyMove : MonoBehaviour
 
     [Header("점수 죽였을 때")]
     public int score;
+
+    [Header("응애아가 적")]
+    public GameObject childEnemy = null;
 
     public float enemyhp;
 
@@ -59,6 +62,8 @@ public class EnemyMove : MonoBehaviour
             if (enemyhp <= 0)
             {
                 AudioManager.Instance.EnemyDie();
+                ComeOnBabyEnemy();
+
                 ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.enmeyDie, transform.position);
                 ScreentHIt();
                 playerData.current_attackPower += 2f;
@@ -67,6 +72,21 @@ public class EnemyMove : MonoBehaviour
                 enemyhp = 0;
                 Destroy(gameObject);
             }
+        }
+    }
+
+    private void ComeOnBabyEnemy()
+    {
+        var _rand = Random.Range(1f, 4f);
+        var _randRange = 0.9f;
+
+        for (int i = 0; i < _rand; i++)
+        {
+            var _randposX = Random.Range(-_randRange, _randRange);
+            var _randposY = Random.Range(-_randRange, _randRange);
+
+            var _newPos = new Vector3(transform.position.x + _randposX, transform.position.y + _randposY, 0f);
+            Instantiate(childEnemy, _newPos, Quaternion.identity);
         }
     }
 

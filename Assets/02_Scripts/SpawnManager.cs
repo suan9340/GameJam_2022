@@ -27,12 +27,17 @@ public class SpawnManager : MonoBehaviour
 
     private Player_data playerData = null;
 
+    [Header("적 오브제")]
     public GameObject enemyObj;
+    public GameObject enemy2Obj;
+    public GameObject enemy3Obj;
+
+
+    [Header("아이템 오브제")]
     public GameObject bulletitemObj;
 
     public static readonly WaitForSeconds enemyDelay = new WaitForSeconds(1.6f);
     public static readonly WaitForSeconds itemDelay = new WaitForSeconds(14f);
-
 
     private Coroutine enemyCor;
     private Coroutine itemCor;
@@ -74,6 +79,7 @@ public class SpawnManager : MonoBehaviour
                 Debug.Log("아이템 스폰은 그만!\n");
                 StopCoroutine(itemCor);
             }
+
             Debug.Log("아이템 스폰 시작");
 
             SpawnObject(bulletitemObj);

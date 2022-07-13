@@ -208,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 2097468746018272464}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.18, y: 3.14, z: 0}
-  m_LocalScale: {x: 0.5815, y: 0.5815, z: 0.5815}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0}
   m_Children:
   - {fileID: 9210141}
   m_Father: {fileID: 0}
@@ -331,9 +331,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followTarget: {x: 0, y: 0}
   moveSpeed: 0.5
-  highhp: 70
-  lowhp: 130
+  highhp: 130
+  lowhp: 70
   textObj: {fileID: 1549962527}
+  score: 70
   enemyhp: 0
 --- !u!50 &2097468746018272468
 Rigidbody2D:
