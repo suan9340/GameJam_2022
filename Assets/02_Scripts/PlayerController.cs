@@ -23,11 +23,6 @@ public class PlayerController : MonoBehaviour
     private bool isSPush = false;
     private bool isSTPush = false;
 
-    Coroutine leftCor = null;
-    Coroutine rightCor = null;
-    Coroutine ShootCor = null;
-    Coroutine StopCor = null;
-
     [Header("ÃÑ¾Ë ÇÁ¸®ÆÕ")]
     public GameObject bulletObj = null;
 
