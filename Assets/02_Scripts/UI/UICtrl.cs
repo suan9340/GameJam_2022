@@ -7,8 +7,17 @@ using UnityEngine.UI;
 
 public class UICtrl : MonoBehaviour
 {
+  
     public void OnClickStartButton()
     {
         SceneManager.LoadScene(1);
     }
+
+    public void OnClickExitButton()
+    {
+        Application.Quit();
+    }
+
+
+
 }
