@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
     public Slider FXSlider;
     public List<AudioClip> music = new List<AudioClip>();
     private float backVol = 1;
+
+
     void Start()
     {
             
@@ -35,21 +37,21 @@ public class AudioManager : MonoBehaviour
     {
         BGM.volume = MasterSlider.value;
         FX.volume = MasterSlider.value;
-        PlayerPrefs.SetFloat("master", backVol);
+        PlayerPrefs.SetFloat("backvol", backVol);
     }
 
     public void BGMSoundSlider()
     {
         BGM.volume = BGMSlider.value;
         backVol = BGMSlider.value;
-        PlayerPrefs.SetFloat("bgmBackVol", backVol);
+        PlayerPrefs.SetFloat("backvol", backVol);
 
     }
     public void FXSoundSlider()
     {
         FX.volume = FXSlider.value;
         backVol = FXSlider.value;
-        PlayerPrefs.SetFloat("fxBackVol", backVol);
+        PlayerPrefs.SetFloat("backvol", backVol);
     }
     public void RandomPlay()
     {
