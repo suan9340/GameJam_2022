@@ -42,9 +42,12 @@ public class PlayerController : MonoBehaviour
     [Header("공격력이 감소하는 속도")]
     public float downPower = 5f;
 
-    private void Start()
+    private void Awake()
     {
         SettingGame();
+    }
+    private void Start()
+    {
         StartCoroutine(PlayerAction());
     }
 
@@ -206,7 +209,7 @@ public class PlayerController : MonoBehaviour
             if (isSPush) return;
             isSPush = true;
 
-            Debug.Log("공격중");
+            //Debug.Log("공격중");
             playerState = Player_State_Enum.Attacking;
         }
     }

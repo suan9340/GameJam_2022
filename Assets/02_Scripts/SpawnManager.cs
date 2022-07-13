@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class SpawnerInfo
+{
+    public string name;
+    public GameObject obj;
+    public float outScore;
+}
+
 public class SpawnManager : MonoBehaviour
 {
     #region SingleTon   
@@ -25,30 +33,30 @@ public class SpawnManager : MonoBehaviour
 
     #endregion
 
+    public List<SpawnerInfo> enemyinfos = new List<SpawnerInfo>();
+
+
+    public List<SpawnerInfo> iteminfos = new List<SpawnerInfo>();
     private Player_data playerData = null;
 
-    [Header("적 오브제")]
-    public GameObject enemyObj;
-    public GameObject enemy2Obj;
-    public GameObject enemy3Obj;
-
-
-    [Header("아이템 오브제")]
-    public GameObject bulletitemObj;
-
-    public static readonly WaitForSeconds enemyDelay = new WaitForSeconds(1.6f);
-    public static readonly WaitForSeconds itemDelay = new WaitForSeconds(14f);
+    public static readonly WaitForSeconds enemyDelay = new WaitForSeconds(1.8f);
+    public static readonly WaitForSeconds enemy2Delay = new WaitForSeconds(3.5f);
+    public static readonly WaitForSeconds enemy3Delay = new WaitForSeconds(5f);
+    public static readonly WaitForSeconds itemDelay = new WaitForSeconds(20f);
 
     private Coroutine enemyCor;
+    private Coroutine enemy2Cor;
+    private Coroutine enemy3Cor;
     private Coroutine itemCor;
-
-    private bool isA = false;
 
     void Start()
     {
         playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
 
         enemyCor = StartCoroutine(ReadySpawnEnemy());
+        enemy2Cor = StartCoroutine(ReadyEnemy2Spawn());
+        enemy3Cor = StartCoroutine(ReadyEnemy3Spawn());
+
         itemCor = StartCoroutine(ReadyItemSpawn());
     }
 
@@ -63,8 +71,49 @@ public class SpawnManager : MonoBehaviour
 
                 yield break;
             }
-            SpawnObject(enemyObj);
+            SpawnObject(enemyinfos[0].obj);
             yield return enemyDelay;
+        }
+    }
+
+
+    private IEnumerator ReadyEnemy2Spawn()
+    {
+        while (true)
+        {
+            while (playerData.score < enemyinfos[1].outScore) yield return null;
+
+            if (GameManager.Instance.gameState == Game_State_Enum.isDie)
+            {
+                Debug.Log("적 스폰은 그만!\n");
+                StopCoroutine(enemy2Cor);
+            }
+
+            Debug.Log("enemy2 스폰 시작");
+
+            SpawnObject(enemyinfos[1].obj);
+
+            yield return enemy3Delay;
+        }
+    }
+
+    private IEnumerator ReadyEnemy3Spawn()
+    {
+        while (true)
+        {
+            while (playerData.score < enemyinfos[2].outScore) yield return null;
+
+            if (GameManager.Instance.gameState == Game_State_Enum.isDie)
+            {
+                Debug.Log("적 스폰은 그만!\n");
+                StopCoroutine(enemy3Cor);
+            }
+
+            Debug.Log("enemy3 스폰 시작");
+
+            SpawnObject(enemyinfos[2].obj);
+
+            yield return enemy2Delay;
         }
     }
 
@@ -72,7 +121,7 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
-            while (playerData.score < 400) yield return null;
+            while (playerData.score < iteminfos[0].outScore) yield return null;
 
             if (GameManager.Instance.gameState == Game_State_Enum.isDie)
             {
@@ -82,7 +131,7 @@ public class SpawnManager : MonoBehaviour
 
             Debug.Log("아이템 스폰 시작");
 
-            SpawnObject(bulletitemObj);
+            SpawnObject(iteminfos[0].obj);
 
             yield return itemDelay;
         }

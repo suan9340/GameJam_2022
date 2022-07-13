@@ -2179,10 +2179,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e52927b6e62b24945a78a273d3438d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyObj: {fileID: 1534735145336528996, guid: bbad22f7e94714244a64e348df6be8a4, type: 3}
-  enemy2Obj: {fileID: 6507049011343574371, guid: 2dc0ea46a945cd24f8f294b6c890852f, type: 3}
-  enemy3Obj: {fileID: 1534735145336528996, guid: bbad22f7e94714244a64e348df6be8a4, type: 3}
-  bulletitemObj: {fileID: 680126327506812372, guid: f422c168016d3444599ed4f6d03dfe7b, type: 3}
+  enemyinfos:
+  - name: "\uAC00\uC7A5 \uAE30\uBCF8\uC801\uC778 \uC801"
+    obj: {fileID: 2097468746018272464, guid: 155f86a8eb2af0e468cb67b43c26de06, type: 3}
+    outScore: 0
+  - name: "\uBD84\uC5F4\uD558\uB294 \uC801"
+    obj: {fileID: 6507049011343574371, guid: 2dc0ea46a945cd24f8f294b6c890852f, type: 3}
+    outScore: 450
+  - name: "\uBE60\uB978 \uC801"
+    obj: {fileID: 1534735145336528996, guid: bbad22f7e94714244a64e348df6be8a4, type: 3}
+    outScore: 600
+  iteminfos:
+  - name: "\uCD1D\uC54C\uC544\uD15C"
+    obj: {fileID: 680126327506812372, guid: f422c168016d3444599ed4f6d03dfe7b, type: 3}
+    outScore: 400
 --- !u!1 &671434560
 GameObject:
   m_ObjectHideFlags: 0
