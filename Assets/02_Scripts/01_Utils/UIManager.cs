@@ -79,11 +79,13 @@ public class UIManager : MonoBehaviour
         {
             GameManager.Instance.SettingGameState(Game_State_Enum.isSetting);
             mainSettngImage.gameObject.SetActive(true);
+            mainSettngImage.rectTransform.DOAnchorPosY(0, 0.2f).SetEase(Ease.OutCirc).SetUpdate(true);
             Time.timeScale = 0f;
         }
         else
         {
-            mainSettngImage.gameObject.SetActive(false);
+            mainSettngImage.rectTransform.DOAnchorPosY(5412f, 0.2f).SetEase(Ease.OutCirc).SetUpdate(true);
+            //mainSettngImage.gameObject.SetActive(false);
             StartCoroutine(CountDownReadyGame());
         }
     }

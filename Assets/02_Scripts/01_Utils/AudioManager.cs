@@ -40,8 +40,12 @@ public class AudioManager : MonoBehaviour
     }
     #endregion
 
+    [Header("AudioSources")]
     public AudioSource BGM;
     public AudioSource FX;
+    public AudioSource FX2;
+
+
     public Slider MasterSlider;
     public Slider BGMSlider;
     public Slider FXSlider;
@@ -85,13 +89,16 @@ public class AudioManager : MonoBehaviour
 
         BGM.volume = MasterSlider.value;
         FX.volume = MasterSlider.value;
+        FX2.volume = MasterSlider.value;
+
+
         masterVol = MasterSlider.value;
 
         // backVol = MasterSlider.value;
         //   vfxVol = MasterSlider.value;
 
         PlayerPrefs.SetFloat(ConstantManager.VOL_Master, masterVol);
-  
+
     }
 
     public void BGMSoundSlider()
@@ -104,6 +111,7 @@ public class AudioManager : MonoBehaviour
     public void FXSoundSlider()
     {
         FX.volume = FXSlider.value;
+        FX2.volume = FXSlider.value;
         vfxVol = FXSlider.value;
         PlayerPrefs.SetFloat(ConstantManager.VOL_VFX, vfxVol);
     }
@@ -119,8 +127,8 @@ public class AudioManager : MonoBehaviour
     // 오디오 함수에 들어가 있으니까 필요한곳에 참조해서  FX.Play();[유니티 내장 함수] 하면 실행됨 
     public void EnemyDie()
     {
-        FX.clip = vFXInfos[0].clip;
-        FX.Play();
+        FX2.clip = vFXInfos[0].clip;
+        FX2.Play();
     }
 
 

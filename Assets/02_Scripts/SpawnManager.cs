@@ -66,7 +66,7 @@ public class SpawnManager : MonoBehaviour
         {
             if (GameManager.Instance.gameState == Game_State_Enum.isDie)
             {
-                Debug.Log("적 스폰은 그만!\n");
+                Debug.Log("적1 스폰은 그만!\n");
                 StopCoroutine(enemyCor);
 
                 yield break;
@@ -85,7 +85,7 @@ public class SpawnManager : MonoBehaviour
 
             if (GameManager.Instance.gameState == Game_State_Enum.isDie)
             {
-                Debug.Log("적 스폰은 그만!\n");
+                Debug.Log("적2 스폰은 그만!\n");
                 StopCoroutine(enemy2Cor);
             }
 
@@ -105,7 +105,7 @@ public class SpawnManager : MonoBehaviour
 
             if (GameManager.Instance.gameState == Game_State_Enum.isDie)
             {
-                Debug.Log("적 스폰은 그만!\n");
+                Debug.Log("적3 스폰은 그만!\n");
                 StopCoroutine(enemy3Cor);
             }
 
