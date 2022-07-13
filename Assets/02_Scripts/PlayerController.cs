@@ -205,7 +205,7 @@ public class PlayerController : MonoBehaviour
             if (isSPush) return;
             isSPush = true;
 
-            //Debug.Log("공격");
+            Debug.Log("공격중");
             playerState = Player_State_Enum.Attacking;
         }
     }

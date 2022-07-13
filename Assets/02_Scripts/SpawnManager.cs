@@ -74,6 +74,7 @@ public class SpawnManager : MonoBehaviour
                 Debug.Log("아이템 스폰은 그만!\n");
                 StopCoroutine(itemCor);
             }
+
             Debug.Log("아이템 스폰 시작");
 
             SpawnObject(bulletitemObj);
