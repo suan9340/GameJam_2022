@@ -84,7 +84,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            mainSettngImage.rectTransform.DOAnchorPosY(5412f, 0.2f).SetEase(Ease.OutCirc).SetUpdate(true);
+            mainSettngImage.rectTransform.DOAnchorPosY(2048f, 0.2f).SetEase(Ease.OutCirc).SetUpdate(true);
             //mainSettngImage.gameObject.SetActive(false);
             StartCoroutine(CountDownReadyGame());
         }
