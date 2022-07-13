@@ -7,42 +7,53 @@ using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
-    AudioSource AS;
-    public Slider BGMSlider;
+    public AudioSource BGM;
+    public AudioSource FX;
     public Slider MasterSlider;
+    public Slider BGMSlider;
     public Slider FXSlider;
     public List<AudioClip> music = new List<AudioClip>();
-    private float backvol = 1;
+    private float backVol = 1;
     void Start()
     {
-        AS = this.GetComponent<AudioSource>();
             
-        backvol = PlayerPrefs.GetFloat("backvol", 1f);
-        BGMSlider.value = backvol;
-        AS.volume = BGMSlider.value;
+        backVol = PlayerPrefs.GetFloat("backvol", 1f);
+        BGMSlider.value = backVol;
+        BGM.volume = BGMSlider.value;
     }
 
     void Update()
     {
-        SoundSlider();
+        BGMSoundSlider();
 
-        if(!AS.isPlaying)
+        if(!BGM.isPlaying)
         {
             RandomPlay();
         }
     }
-
-    public void SoundSlider()
+    public void MasterSoundSlider()
     {
-        AS.volume = BGMSlider.value;
-        backvol = BGMSlider.value;
-        PlayerPrefs.SetFloat("backvol", backvol);
-
+        BGM.volume = MasterSlider.value;
+        FX.volume = MasterSlider.value;
+        PlayerPrefs.SetFloat("master", backVol);
     }
 
+    public void BGMSoundSlider()
+    {
+        BGM.volume = BGMSlider.value;
+        backVol = BGMSlider.value;
+        PlayerPrefs.SetFloat("bgmBackVol", backVol);
+
+    }
+    public void FXSoundSlider()
+    {
+        FX.volume = FXSlider.value;
+        backVol = FXSlider.value;
+        PlayerPrefs.SetFloat("fxBackVol", backVol);
+    }
     public void RandomPlay()
     {
-        AS.clip = music[Random.Range(0, music.Count)];
-        AS.Play();
+        BGM.clip = music[Random.Range(0, music.Count)];
+        BGM.Play();
     }
 }
