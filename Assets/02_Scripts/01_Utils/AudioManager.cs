@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
 {
     AudioSource AS;
     public Slider BGMSlider;
+    public Slider MasterSlider;
+    public Slider FXSlider;
     public List<AudioClip> music = new List<AudioClip>();
     private float backvol = 1;
     void Start()
@@ -26,7 +28,7 @@ public class AudioManager : MonoBehaviour
 
         if(!AS.isPlaying)
         {
-            AS.Play();
+            RandomPlay();
         }
     }
 
