@@ -52,7 +52,6 @@ public class EnemyMove : MonoBehaviour
 
             collision.GetComponent<BulletMove>().Despawn();
 
-            Destroy(collision.gameObject);
             enemyhp -= playerData.current_attackPower;
 
             UpdateEnemyHP();

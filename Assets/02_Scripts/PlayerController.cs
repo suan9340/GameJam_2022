@@ -36,9 +36,6 @@ public class PlayerController : MonoBehaviour
     public Transform leftdowndiafireTrn = null;
     public Transform rightdowndiafireTrn = null;
 
-    [Header("총알 아이템 먹은 횟수")]
-    public int num_gum = 0;
-
     [Header("공격력이 증가하는 속도")]
     public float upPower = 3f;
 
@@ -67,6 +64,7 @@ public class PlayerController : MonoBehaviour
         playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
         playerData.current_attackPower = playerData.max_attackPower;
         playerData.score = 0f;
+        playerData.playerlevel = 0f;
     }
 
     #region EventTrigger
@@ -188,7 +186,7 @@ public class PlayerController : MonoBehaviour
                 if (isLPush) return;
                 isLPush = true;
 
-                Debug.Log("좌클");
+                //Debug.Log("좌클");
                 playerState = Player_State_Enum.LeftRotating;
             }
 
@@ -197,7 +195,7 @@ public class PlayerController : MonoBehaviour
                 if (isRPush) return;
                 isRPush = true;
 
-                Debug.Log("우클");
+                //Debug.Log("우클");
                 playerState = Player_State_Enum.RightRotating;
             }
 
@@ -209,7 +207,7 @@ public class PlayerController : MonoBehaviour
             if (isSPush) return;
             isSPush = true;
 
-            Debug.Log("공격");
+            //Debug.Log("공격");
             playerState = Player_State_Enum.Attacking;
         }
     }
@@ -269,7 +267,7 @@ public class PlayerController : MonoBehaviour
     {
         while (playerState == Player_State_Enum.Attacking)
         {
-            switch (num_gum)
+            switch (playerData.playerlevel)
             {
                 case 0:
                     SpawnORInstantiate(frontfireTrn);
@@ -368,13 +366,6 @@ public class PlayerController : MonoBehaviour
 
             UIManager.Instance.GameOver();
             Debug.Log("GameOut");
-        }
-
-        if (collision.CompareTag(ConstantManager.TAG_ITEM))
-        {
-            Destroy(collision.gameObject);
-
-            num_gum++;
         }
     }
 }

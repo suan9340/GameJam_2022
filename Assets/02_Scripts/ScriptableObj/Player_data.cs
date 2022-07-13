@@ -12,4 +12,5 @@ public class Player_data : ScriptableObject
     public float moveSpeed;
     public float score;
     public float bestScore;
+    public float playerlevel;
 }

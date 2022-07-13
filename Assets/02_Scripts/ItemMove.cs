@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemMOM : MonoBehaviour
+public class ItemMove : MonoBehaviour
 {
+    private Player_data playerData;
     [SerializeField] private Vector2 followTarget = Vector2.zero;
     [SerializeField] private float moveSpeed = 1f;
+
+    private void Start()
+    {
+        playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
+    }
 
     private void Update()
     {
@@ -21,14 +27,14 @@ public class ItemMOM : MonoBehaviour
     {
         if (collision.CompareTag(ConstantManager.TAG_BULLET))
         {
+            ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.itemEat, transform.position);
+
             collision.GetComponent<BulletMove>().Despawn();
-            ActionItem();
-            gameObject.SetActive(false);
+
+            Destroy(gameObject);
+
+            if (playerData.playerlevel == 4) return;
+            playerData.playerlevel++;
         }
-    }
-
-    protected virtual void ActionItem()
-    {
-
     }
 }

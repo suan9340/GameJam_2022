@@ -2147,7 +2147,7 @@ GameObject:
   - component: {fileID: 626609376}
   - component: {fileID: 626609377}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: SpawnManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2180,6 +2180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyObj: {fileID: 2097468746018272464, guid: 155f86a8eb2af0e468cb67b43c26de06, type: 3}
+  bulletitemObj: {fileID: 680126327506812372, guid: f422c168016d3444599ed4f6d03dfe7b, type: 3}
 --- !u!1 &671434560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2237,7 +2238,6 @@ MonoBehaviour:
   rightupdiafireTrn: {fileID: 1490451542}
   leftdowndiafireTrn: {fileID: 2061060278}
   rightdowndiafireTrn: {fileID: 225362486}
-  num_gum: 0
   upPower: 4
   downPower: 5
 --- !u!61 &671434563
@@ -4645,12 +4645,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e0e6d42d373c4344ade2feabd302fff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGMMixer: {fileID: 24100000, guid: 1ec69b3b62bfb38429a149f4ea145815, type: 2}
-  MasterMixer: {fileID: 24100000, guid: 1ec69b3b62bfb38429a149f4ea145815, type: 2}
-  SFXMixer: {fileID: 24100000, guid: 1ec69b3b62bfb38429a149f4ea145815, type: 2}
   BGMSlider: {fileID: 1347657421}
   MasterSlider: {fileID: 1146361196}
-  SFXSlider: {fileID: 981492043}
+  FXSlider: {fileID: 0}
+  music: []
 --- !u!4 &1243349503
 Transform:
   m_ObjectHideFlags: 0
