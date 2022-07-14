@@ -149,17 +149,17 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnObject(GameObject _obj)
     {
-        float randomX = Random.Range(-3, 4);
-        float randomY = Random.Range(-5, 6);
+        float randomX = Random.Range(-143, 2017);
+        float randomY = Random.Range(-115, 1160);
 
-        float random1 = Random.Range(-3, -4);
-        float random2 = Random.Range(3, 4);
+        float random1 = Random.Range(-25, -75);
+        float random2 = Random.Range(1920, 1950);
 
-        float randomx = Random.Range(-3, 4);
-        float randomy = Random.Range(-6, 6);
+        float randomx = Random.Range(-40, 1920);
+        float randomy = Random.Range(-35, 1100);
 
-        float random4 = Random.Range(-5, -6);
-        float random6 = Random.Range(5, 6);
+        float random4 = Random.Range(-50, -100);
+        float random6 = Random.Range(1050, 1100);
 
         if (randomX < 0 && randomY < 0)
         {
