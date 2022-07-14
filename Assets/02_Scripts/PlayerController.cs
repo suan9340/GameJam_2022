@@ -24,12 +24,6 @@ public class PlayerController : MonoBehaviour
     public bool isLeftBtn = false;
     public bool isRightBtn = false;
 
-    // 중복출력 안되게 하는 bool
-    private bool isLPush = false;
-    private bool isRPush = false;
-    private bool isSPush = false;
-    private bool isSTPush = false;
-
     [Header("총알 프리팹")]
     public GameObject bulletObj = null;
 
@@ -61,7 +55,6 @@ public class PlayerController : MonoBehaviour
         }
 
         Key();
-        //InputKey();
     }
 
     private void SettingGame()
@@ -96,134 +89,6 @@ public class PlayerController : MonoBehaviour
             playerState = Player_State_Enum.Stoping;
         }
     }
-
-    #region EventTrigger
-
-    public void OnClickLeftDown()
-    {
-        LeftDown();
-    }
-
-    public void OnClickLeftUp()
-    {
-        LeftUp();
-    }
-
-    public void OnClickRightDown()
-    {
-        RightDown();
-    }
-
-    public void OnClickRightUp()
-    {
-        RightUp();
-    }
-
-    #endregion
-
-    private void LeftDown()
-    {
-        isLeftBtn = true;
-
-        //isSTPush = false;
-    }
-
-    private void LeftUp()
-    {
-        isLeftBtn = false;
-        //isLPush = false;
-    }
-
-    private void RightDown()
-    {
-        isRightBtn = true;
-        //isSTPush = false;
-    }
-
-    private void RightUp()
-    {
-        isRightBtn = false;
-        //isRPush = false;
-    }
-
-    /// <summary>
-    /// 플레이어의 행동 키를 입력받는 함수
-    /// </summary>
-    /// 
-    private void InputKey()
-    {
-        //if (isRightBtn == false && isLeftBtn == false)
-        //{
-        //    isStoping = true;
-        //}
-
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.A))
-        {
-            isLeftBtn = true;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.A))
-        {
-            isLeftBtn = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.D))
-        {
-            isRightBtn = true;
-        }
-        if (Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.D))
-        {
-            isRightBtn = false;
-        }
-    }
-
-
-    /// <summary>
-    /// 입력받은 키를 기반으로 플레이어의 상태를 설정하는 함수
-    /// </summary>
-    private void CheckState()
-    {
-        //if (isStoping)
-        //{
-        //    if (isSTPush) return;
-        //    isSTPush = true;
-
-        //    playerState = Player_State_Enum.Stoping;
-        //}
-
-        //if (!isShooting)
-        //{
-        //    if (isLeftBtn)
-        //    {
-        //        if (isLPush) return;
-        //        isLPush = true;
-
-        //        //Debug.Log("좌클");
-        //        playerState = Player_State_Enum.LeftRotating;
-        //    }
-
-        //    if (isRightBtn)
-        //    {
-        //        if (isRPush) return;
-        //        isRPush = true;
-
-        //        //Debug.Log("우클");
-        //        playerState = Player_State_Enum.RightRotating;
-        //    }
-
-
-        //}
-
-        //if (isShooting)
-        //{
-        //    //if (isSPush) return;
-        //    //isSPush = true;
-
-        //    //Debug.Log("공격중");
-        //    playerState = Player_State_Enum.Attacking;
-        //}
-    }
-
 
     /// <summary>
     /// 플레이어의 상태에 따라 플레이어의 행동을 바꿔주는 함수
