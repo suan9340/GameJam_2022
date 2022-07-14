@@ -145,7 +145,6 @@ public class PlayerController : MonoBehaviour
             LeftUp();
         }
 
-
         if (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.D))
         {
             RightDown();
@@ -160,6 +159,12 @@ public class PlayerController : MonoBehaviour
             if (isShooting) return;
 
             isShooting = true;
+        }
+        else if((isRightBtn && isLeftBtn == false) || isRightBtn == false && isLeftBtn)
+        {
+            if (isShooting == false) return;
+            isShooting = false;
+            isSPush = false;
         }
         else
         {

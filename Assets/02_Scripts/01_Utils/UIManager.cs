@@ -52,6 +52,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        SetResolution();
+
         StartCoroutine(CountDownReadyGame());
     }
 
@@ -64,7 +66,7 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            
+
             OnClickSettingChang();
         }
     }
@@ -171,4 +173,13 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+
+    private void SetResolution()
+    {
+        int _width = 1920;
+        int _height = 1080;
+
+        Screen.SetResolution(_width, _height, true);
+        Screen.SetResolution(Screen.width, (Screen.width * 16) / 9, true);
+    }
 }
