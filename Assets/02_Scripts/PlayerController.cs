@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable]
+public class playergunInfo
+{
+    public string name;
+    public Transform transform;
+    public GameObject obj;
+}
+
 public class PlayerController : MonoBehaviour
 {
     private Player_data playerData = null;
@@ -26,15 +35,8 @@ public class PlayerController : MonoBehaviour
     [Header("총알 프리팹")]
     public GameObject bulletObj = null;
 
-    [Header("총알 위치")]
-    public Transform frontfireTrn = null;
-    public Transform backfireTrn = null;
-    public Transform leftfireTrn = null;
-    public Transform rightfireTrn = null;
-    public Transform leftupdiafireTrn = null;
-    public Transform rightupdiafireTrn = null;
-    public Transform leftdowndiafireTrn = null;
-    public Transform rightdowndiafireTrn = null;
+    [Header("총알 관련된거")]
+    public List<playergunInfo> gunInfo = new List<playergunInfo>();
 
     [Header("공격력이 증가하는 속도")]
     public float upPower = 3f;
@@ -160,7 +162,7 @@ public class PlayerController : MonoBehaviour
 
             isShooting = true;
         }
-        else if((isRightBtn && isLeftBtn == false) || isRightBtn == false && isLeftBtn)
+        else if ((isRightBtn && isLeftBtn == false) || isRightBtn == false && isLeftBtn)
         {
             if (isShooting == false) return;
             isShooting = false;
@@ -229,6 +231,8 @@ public class PlayerController : MonoBehaviour
     {
         while (true)
         {
+            while (GameManager.Instance.gameState == Game_State_Enum.isSetting) yield return null;
+
             switch (playerState)
             {
                 case Player_State_Enum.LeftRotating:
@@ -279,39 +283,39 @@ public class PlayerController : MonoBehaviour
             switch (playerData.playerlevel)
             {
                 case 0:
-                    SpawnORInstantiate(frontfireTrn);
+                    SpawnORInstantiate(gunInfo[0].transform, gunInfo[0].obj);
                     break;
 
                 case 1:
-                    SpawnORInstantiate(frontfireTrn);
-                    SpawnORInstantiate(backfireTrn);
+                    SpawnORInstantiate(gunInfo[0].transform, gunInfo[0].obj);
+                    SpawnORInstantiate(gunInfo[1].transform, gunInfo[1].obj);
                     break;
 
                 case 2:
-                    SpawnORInstantiate(frontfireTrn);
-                    SpawnORInstantiate(backfireTrn);
-                    SpawnORInstantiate(rightfireTrn);
-                    SpawnORInstantiate(leftfireTrn);
+                    SpawnORInstantiate(gunInfo[0].transform, gunInfo[0].obj);
+                    SpawnORInstantiate(gunInfo[1].transform, gunInfo[1].obj);
+                    SpawnORInstantiate(gunInfo[2].transform, gunInfo[2].obj);
+                    SpawnORInstantiate(gunInfo[3].transform, gunInfo[3].obj);
                     break;
 
                 case 3:
-                    SpawnORInstantiate(frontfireTrn);
-                    SpawnORInstantiate(backfireTrn);
-                    SpawnORInstantiate(rightfireTrn);
-                    SpawnORInstantiate(leftfireTrn);
-                    SpawnORInstantiate(leftupdiafireTrn);
-                    SpawnORInstantiate(rightdowndiafireTrn);
+                    SpawnORInstantiate(gunInfo[0].transform, gunInfo[0].obj);
+                    SpawnORInstantiate(gunInfo[1].transform, gunInfo[1].obj);
+                    SpawnORInstantiate(gunInfo[2].transform, gunInfo[2].obj);
+                    SpawnORInstantiate(gunInfo[3].transform, gunInfo[3].obj);
+                    SpawnORInstantiate(gunInfo[4].transform, gunInfo[4].obj);
+                    SpawnORInstantiate(gunInfo[5].transform, gunInfo[5].obj);
                     break;
 
                 case 4:
-                    SpawnORInstantiate(frontfireTrn);
-                    SpawnORInstantiate(backfireTrn);
-                    SpawnORInstantiate(rightfireTrn);
-                    SpawnORInstantiate(leftfireTrn);
-                    SpawnORInstantiate(leftdowndiafireTrn);
-                    SpawnORInstantiate(rightdowndiafireTrn);
-                    SpawnORInstantiate(leftupdiafireTrn);
-                    SpawnORInstantiate(rightupdiafireTrn);
+                    SpawnORInstantiate(gunInfo[0].transform, gunInfo[0].obj);
+                    SpawnORInstantiate(gunInfo[1].transform, gunInfo[1].obj);
+                    SpawnORInstantiate(gunInfo[2].transform, gunInfo[2].obj);
+                    SpawnORInstantiate(gunInfo[3].transform, gunInfo[3].obj);
+                    SpawnORInstantiate(gunInfo[4].transform, gunInfo[4].obj);
+                    SpawnORInstantiate(gunInfo[5].transform, gunInfo[5].obj);
+                    SpawnORInstantiate(gunInfo[6].transform, gunInfo[6].obj);
+                    SpawnORInstantiate(gunInfo[7].transform, gunInfo[7].obj);
                     break;
             }
 
@@ -321,13 +325,16 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void SpawnORInstantiate(Transform _posTrn)
+    private void SpawnORInstantiate(Transform _posTrn, GameObject _obj)
     {
+        if (_obj.activeSelf == false)
+            _obj.SetActive(true);
+
         GameObject _bullet = null;
         if (GameManager.Instance.poolManager.transform.childCount > 0)
         {
             _bullet = GameManager.Instance.poolManager.transform.GetChild(0).gameObject;
-            _bullet.transform.SetParent(frontfireTrn.transform, false);
+            _bullet.transform.SetParent(_posTrn.transform, false);
 
             _bullet.transform.position = _posTrn.position;
             _bullet.transform.rotation = _posTrn.rotation;

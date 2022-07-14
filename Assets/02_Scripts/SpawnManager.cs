@@ -64,7 +64,7 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(2.5f);
 
             while (GameManager.Instance.gameState == Game_State_Enum.isSetting) yield return null;
 

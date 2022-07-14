@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTarget: {x: 0, y: 0}
-  moveSpeed: 1
+  moveSpeed: 1.2
   highhp: 60
   lowhp: 30
   textObj: {fileID: 7102974020804395789}
