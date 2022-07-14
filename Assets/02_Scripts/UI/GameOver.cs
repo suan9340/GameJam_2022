@@ -73,7 +73,6 @@ public class GameOver : MonoBehaviour
     private void NewRecord()
     {
         newRecordText.gameObject.SetActive(true);
-        //ShakeText(1f, 30f, 30)
         Debug.Log("qwe");
         StartCoroutine(ShakeText(2f, 15f, 18));
     }
