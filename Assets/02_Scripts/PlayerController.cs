@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+        GameManager.Instance.ItemGunStart();
         StartCoroutine(PlayerAction());
     }
 
@@ -218,7 +219,7 @@ public class PlayerController : MonoBehaviour
             //if (isSPush) return;
             //isSPush = true;
 
-            Debug.Log("공격중");
+            //Debug.Log("공격중");
             playerState = Player_State_Enum.Attacking;
         }
     }
@@ -266,14 +267,16 @@ public class PlayerController : MonoBehaviour
     {
         if (playerData.current_attackPower <= 0) return;
 
-        transform.eulerAngles += new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime;
+        transform.Rotate(new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime);
+        //transform.eulerAngles += new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime;
     }
 
     private void RightRotate()
     {
         if (playerData.current_attackPower <= 0) return;
 
-        transform.eulerAngles -= new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime;
+        transform.Rotate(new Vector3(0, 0, -1) * playerData.moveSpeed * Time.deltaTime);
+        //transform.eulerAngles -= new Vector3(0, 0, 1) * playerData.moveSpeed * Time.deltaTime;
     }
 
     private IEnumerator ShootReady()

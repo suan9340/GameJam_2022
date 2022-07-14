@@ -65,16 +65,21 @@ public class Enemy3Move : MonoBehaviour
             UpdateEnemyHP();
             if (enemyhp <= 0)
             {
-                AudioManager.Instance.EnemyDie();
-                ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.enmeyDie, transform.position);
-                ScreentHIt();
-                playerData.current_attackPower += 2f;
-                AddScore(score);
-                ShackeCam(0.4f, 0.15f, 13);
-                enemyhp = 0;
-                Destroy(gameObject);
+                EnmeyDie();
             }
         }
+    }
+
+    private void EnmeyDie()
+    {
+        AudioManager.Instance.EnemyDie();
+        ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.enmeyDie, transform.position);
+        ScreentHIt();
+        playerData.current_attackPower += 2f;
+        AddScore(score);
+        GameManager.Instance.ShackeCam(0.4f, 0.2f, 13);
+        enemyhp = 0;
+        Destroy(gameObject);
     }
 
     private void IsGameOver()
@@ -100,12 +105,6 @@ public class Enemy3Move : MonoBehaviour
     {
         textObj.text = $"{(int)enemyhp}";
     }
-
-    private void ShackeCam(float _dur, float _str, int _vib)
-    {
-        Camera.main.DOShakePosition(_dur, _str, _vib);
-    }
-
     private void AddScore(int _score)
     {
         playerData.score += _score;

@@ -166,7 +166,7 @@ public class UIManager : MonoBehaviour
     private void GameOverChangShow()
     {
         gameOverObj.gameObject.SetActive(true);
-        gameOverObj.gameObject.transform.DOScale(new Vector3(1, 1, 1), 2f).SetEase(ease);
+        gameOverObj.gameObject.transform.DOScale(new Vector3(1, 1, 1), 1.8f).SetEase(ease);
     }
 
     public void OnClickRestartGame()
