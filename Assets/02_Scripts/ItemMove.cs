@@ -41,7 +41,6 @@ public class ItemMove : MonoBehaviour
             if (isDie) return;
             isDie = true;
 
-
             collision.GetComponent<BulletMove>().Despawn();
 
             AudioManager.Instance.ItemEat();
@@ -54,18 +53,12 @@ public class ItemMove : MonoBehaviour
 
     private void CheckItemCurrent()
     {
-        if (playerData.playerlevel == 4) return;
-
+        if (playerData.playerlevel == 4)
+        {
+            playerData.score += 200;
+            return;
+        }
         playerData.playerlevel++;
-
-        if (playerData.playerlevel < 4)
-        {
-            Debug.Log($"¾ÆÀÌÅÛ È¹µæ!   : ÇöÀç ¾ÆÀÌÅÛ {playerData.playerlevel}");
-        }
-        else
-        {
-
-        }
     }
 
     private void IsGameOver()

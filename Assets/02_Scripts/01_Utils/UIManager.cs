@@ -54,6 +54,10 @@ public class UIManager : MonoBehaviour
     public GameObject gameOverObj = null;
     public Ease ease;
 
+    [Header("좌 우 버튼 오브젝트")]
+    public Button leftBtn = null;
+    public Button rightBtn = null;
+
     private void Start()
     {
         SetResolution();
@@ -188,5 +192,31 @@ public class UIManager : MonoBehaviour
 
         Screen.SetResolution(_width, _height, true);
         Screen.SetResolution(Screen.width, (Screen.width * 16) / 9, true);
+    }
+
+    public void LeftBtnActive()
+    {
+        leftBtn.image.color = leftBtn.colors.pressedColor;
+    }
+
+    public void RightBtnActive()
+    {
+        rightBtn.image.color = rightBtn.colors.pressedColor;
+    }
+
+    public void LeftBtnFalse()
+    {
+        leftBtn.image.color = leftBtn.colors.normalColor;
+    }
+
+    public void RightBtnFalse()
+    {
+        rightBtn.image.color = rightBtn.colors.normalColor;
+    }
+
+    public void TwoBtn()
+    {
+        rightBtn.image.color = rightBtn.colors.selectedColor;
+        leftBtn.image.color = leftBtn.colors.selectedColor;
     }
 }
