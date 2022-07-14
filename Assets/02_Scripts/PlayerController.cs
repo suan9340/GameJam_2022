@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        GameManager.Instance.ItemGunStart();
+        //GameManager.Instance.ItemGunStart();
         StartCoroutine(PlayerAction());
     }
 
@@ -379,18 +379,18 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(ConstantManager.TAG_ENEMY))
-        {
-            ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.playerDie, transform.position);
-            GameManager.Instance.SettingGameState(Game_State_Enum.isDie);
+        //if (collision.CompareTag(ConstantManager.TAG_ENEMY))
+        //{
+        //    ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.playerDie, transform.position);
+        //    GameManager.Instance.SettingGameState(Game_State_Enum.isDie);
 
-            UIManager.Instance.GameOver();
-            Debug.Log("GameOut");
-        }
+        //    UIManager.Instance.GameOver();
+        //    Debug.Log("GameOut");
+        //}
 
-        if (collision.CompareTag(ConstantManager.TAG_ITEM))
-        {
-            Destroy(collision.gameObject);
-        }
+        //if (collision.CompareTag(ConstantManager.TAG_ITEM))
+        //{
+        //    Destroy(collision.gameObject);
+        //}
     }
 }

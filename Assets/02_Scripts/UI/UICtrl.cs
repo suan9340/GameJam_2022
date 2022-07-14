@@ -7,17 +7,88 @@ using UnityEngine.UI;
 
 public class UICtrl : MonoBehaviour
 {
+    private Player_data playerData = null;
+
+    [Header("물음표창 유아이")]
+    public Image questionObj = null;
+
+    [Header("설정창 유아이")]
+    public Image suljungObj = null;
+
+
+    private bool isSettingChang = false;
+    private bool isQuestionChang = false;
+
+
     private void Start()
     {
+        playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
         Application.targetFrameRate = 200;
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isSettingChang)
+                OnClickSettingChang();
+
+            else if (isQuestionChang)
+                OnClickQuestion();
+            else
+                OnClickSettingChang();
+        }
+    }
+
+    /// <summary>
+    /// 시작 버튼 눌렀을 떄
+    /// </summary>
     public void OnClickStartButton()
     {
-        SceneManager.LoadScene(1);
+        if (playerData.isfirst)
+        {
+            playerData.isfirst = false;
+
+        }
+        else
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     public void OnClickExitButton()
     {
         Application.Quit();
+    }
+
+    public void OnClickSettingChang()
+    {
+        isSettingChang = !isSettingChang;
+        if (isSettingChang)
+        {
+            GameManager.Instance.SettingGameState(Game_State_Enum.isSetting);
+            suljungObj.gameObject.SetActive(true);
+            suljungObj.rectTransform.DOAnchorPosY(0, 1f).SetEase(Ease.OutCirc).SetUpdate(true);
+        }
+        else
+        {
+            suljungObj.rectTransform.DOAnchorPosY(1171f, 1f).SetEase(Ease.OutCirc).SetUpdate(true);
+        }
+    }
+
+
+    public void OnClickQuestion()
+    {
+        isQuestionChang = !isQuestionChang;
+        if (isQuestionChang)
+        {
+            GameManager.Instance.SettingGameState(Game_State_Enum.isSetting);
+            questionObj.gameObject.SetActive(true);
+            questionObj.rectTransform.DOAnchorPosY(0, 1f).SetEase(Ease.OutCirc).SetUpdate(true);
+        }
+        else
+        {
+            questionObj.rectTransform.DOAnchorPosY(-1772f, 1.5f).SetEase(Ease.OutCirc).SetUpdate(true);
+        }
     }
 }

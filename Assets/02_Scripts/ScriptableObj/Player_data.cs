@@ -13,4 +13,6 @@ public class Player_data : ScriptableObject
     public float score;
     public float bestScore;
     public float playerlevel;
+
+    public bool isfirst;
 }

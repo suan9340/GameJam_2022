@@ -70,10 +70,10 @@ public class EnemyMove : MonoBehaviour
             }
         }
 
-        if(collision.CompareTag(ConstantManager.TAG_DESBUL))
-        {
-            EnemyDie();
-        }
+        //if(collision.CompareTag(ConstantManager.TAG_DESBUL))
+        //{
+        //    EnemyDie();
+        //}
     }
 
     private void EnemyDie()

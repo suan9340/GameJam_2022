@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     public Game_State_Enum gameState;
 
+    private Player_data playerData = null;
+
     public BulletPoolManager poolManager { get; private set; }
 
     public Vector2 MinPosition { get; private set; }
@@ -35,6 +37,21 @@ public class GameManager : MonoBehaviour
 
     [Header("±§º± æ∆¿Ã≈€")]
     public GameObject gunItem = null;
+
+    private void Awake()
+    {
+        playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
+    }
+
+    private void OnEnable()
+    {
+        if (playerData.isfirst)
+        {
+            playerData.isfirst = false;
+
+            UIManager.Instance.OnClickQuestion();
+        }
+    }
 
     private void Start()
     {
@@ -56,7 +73,6 @@ public class GameManager : MonoBehaviour
 
     public void ItemGunStart()
     {
-        //StartCoroutine(EnergyGun());
-        gunItem.transform.DORotate(new Vector3(0, 0, 360f), 2.5f, RotateMode.FastBeyond360).OnComplete(() => { gunItem.SetActive(false); });
+        gunItem.SetActive(true);
     }
 }
