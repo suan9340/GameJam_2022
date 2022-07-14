@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
 
     public void ShackeCam(float _dur, float _str, int _vib)
     {
-        Camera.main.DOShakePosition(_dur, _str, _vib);
+        Camera.main.DOShakePosition(_dur, _str, _vib).OnComplete(() => { Camera.main.transform.position = new Vector3(0, 0, -10); });
     }
 
     public void ItemGunStart()
