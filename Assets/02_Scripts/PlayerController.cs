@@ -21,10 +21,8 @@ public class PlayerController : MonoBehaviour
     public static readonly WaitForSeconds playerDelay = new WaitForSeconds(0.1f);
 
     // 키 입력받는 bool
-    private bool isLeftBtn = false;
-    private bool isRightBtn = false;
-    private bool isShooting = false;
-    private bool isStoping = false;
+    public bool isLeftBtn = false;
+    public bool isRightBtn = false;
 
     // 중복출력 안되게 하는 bool
     private bool isLPush = false;
@@ -62,8 +60,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        InputKey();
-        CheckState();
+        Key();
+        //InputKey();
     }
 
     private void SettingGame()
@@ -72,6 +70,31 @@ public class PlayerController : MonoBehaviour
         playerData.current_attackPower = playerData.max_attackPower;
         playerData.score = 0f;
         playerData.playerlevel = 0f;
+    }
+
+    private void Key()
+    {
+        isLeftBtn = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.F);
+        isRightBtn = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.J);
+
+
+        // 공격하고 있는 상태일 때
+        if (isLeftBtn && isRightBtn)
+        {
+            playerState = Player_State_Enum.Attacking;
+        }
+        else if (isRightBtn)
+        {
+            playerState = Player_State_Enum.RightRotating;
+        } // 오른쪽키를 때면
+        else if (isLeftBtn)
+        {
+            playerState = Player_State_Enum.LeftRotating;
+        } // 둘다 때면
+        else
+        {
+            playerState = Player_State_Enum.Stoping;
+        }
     }
 
     #region EventTrigger
@@ -102,30 +125,25 @@ public class PlayerController : MonoBehaviour
     {
         isLeftBtn = true;
 
-        isStoping = false;
-        isSTPush = false;
+        //isSTPush = false;
     }
 
     private void LeftUp()
     {
         isLeftBtn = false;
-        isLPush = false;
-        isShooting = false;
+        //isLPush = false;
     }
 
     private void RightDown()
     {
         isRightBtn = true;
-
-        isStoping = false;
-        isSTPush = false;
+        //isSTPush = false;
     }
 
     private void RightUp()
     {
         isRightBtn = false;
-        isRPush = false;
-        isShooting = false;
+        //isRPush = false;
     }
 
     /// <summary>
@@ -134,46 +152,28 @@ public class PlayerController : MonoBehaviour
     /// 
     private void InputKey()
     {
-        if (isRightBtn == false && isLeftBtn == false)
-        {
-            isStoping = true;
-        }
+        //if (isRightBtn == false && isLeftBtn == false)
+        //{
+        //    isStoping = true;
+        //}
+
 
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.A))
         {
-            LeftDown();
+            isLeftBtn = true;
         }
         if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.A))
         {
-            LeftUp();
+            isLeftBtn = false;
         }
 
         if (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.D))
         {
-            RightDown();
+            isRightBtn = true;
         }
         if (Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.D))
         {
-            RightUp();
-        }
-
-        if (isRightBtn && isLeftBtn)
-        {
-            if (isShooting) return;
-
-            isShooting = true;
-        }
-        else if ((isRightBtn && isLeftBtn == false) || isRightBtn == false && isLeftBtn)
-        {
-            if (isShooting == false) return;
-            isShooting = false;
-            isSPush = false;
-        }
-        else
-        {
-            if (isShooting == false) return;
-            isShooting = false;
-            isSPush = false;
+            isRightBtn = false;
         }
     }
 
@@ -183,45 +183,45 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void CheckState()
     {
-        if (isStoping)
-        {
-            if (isSTPush) return;
-            isSTPush = true;
+        //if (isStoping)
+        //{
+        //    if (isSTPush) return;
+        //    isSTPush = true;
 
-            playerState = Player_State_Enum.Stoping;
-        }
+        //    playerState = Player_State_Enum.Stoping;
+        //}
 
-        if (!isShooting)
-        {
-            if (isLeftBtn)
-            {
-                if (isLPush) return;
-                isLPush = true;
+        //if (!isShooting)
+        //{
+        //    if (isLeftBtn)
+        //    {
+        //        if (isLPush) return;
+        //        isLPush = true;
 
-                //Debug.Log("좌클");
-                playerState = Player_State_Enum.LeftRotating;
-            }
+        //        //Debug.Log("좌클");
+        //        playerState = Player_State_Enum.LeftRotating;
+        //    }
 
-            if (isRightBtn)
-            {
-                if (isRPush) return;
-                isRPush = true;
+        //    if (isRightBtn)
+        //    {
+        //        if (isRPush) return;
+        //        isRPush = true;
 
-                //Debug.Log("우클");
-                playerState = Player_State_Enum.RightRotating;
-            }
+        //        //Debug.Log("우클");
+        //        playerState = Player_State_Enum.RightRotating;
+        //    }
 
 
-        }
+        //}
 
-        if (isShooting)
-        {
-            //if (isSPush) return;
-            //isSPush = true;
+        //if (isShooting)
+        //{
+        //    //if (isSPush) return;
+        //    //isSPush = true;
 
-            //Debug.Log("공격중");
-            playerState = Player_State_Enum.Attacking;
-        }
+        //    //Debug.Log("공격중");
+        //    playerState = Player_State_Enum.Attacking;
+        //}
     }
 
 

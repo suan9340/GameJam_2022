@@ -2972,6 +2972,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerState: 0
+  isLeftBtn: 0
+  isRightBtn: 0
   bulletObj: {fileID: 5362495111204036731, guid: 96de166084f0d4b49b80302ca579fde9, type: 3}
   gunInfo:
   - name: "\uC55E"
