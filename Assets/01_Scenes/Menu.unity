@@ -3228,6 +3228,8 @@ MonoBehaviour:
   FXSlider: {fileID: 1893166819}
   musicInfo: []
   vFXInfos: []
+  isBGMStop: 0
+  isFxStop: 0
 --- !u!4 &1190997233
 Transform:
   m_ObjectHideFlags: 0

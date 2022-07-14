@@ -18,4 +18,4 @@ MonoBehaviour:
   score: 0
   bestScore: 0
   playerlevel: 0
-  isfirst: 1
+  isfirst: 0
