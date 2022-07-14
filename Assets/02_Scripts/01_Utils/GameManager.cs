@@ -34,8 +34,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        MinPosition = new Vector2(-5f, -7f);
-        MaxPosition = new Vector2(5f, 7f);
+        MinPosition = new Vector2(-16f, -10f);
+        MaxPosition = new Vector2(16f, 10f);
 
         poolManager = FindObjectOfType<BulletPoolManager>();
     }

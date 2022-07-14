@@ -208,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 6507049011343574371}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.18, y: 3.14, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0}
   m_Children:
   - {fileID: 5140324816881678510}
   m_Father: {fileID: 0}
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTarget: {x: 0, y: 0}
-  moveSpeed: 0.3
+  moveSpeed: 0.4
   highhp: 100
   lowhp: 60
   textObj: {fileID: 5140324817759993004}
