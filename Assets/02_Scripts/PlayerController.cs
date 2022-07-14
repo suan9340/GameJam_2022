@@ -107,6 +107,7 @@ public class PlayerController : MonoBehaviour
     {
         isLeftBtn = false;
         isLPush = false;
+        isShooting = false;
     }
 
     private void RightDown()
@@ -121,6 +122,7 @@ public class PlayerController : MonoBehaviour
     {
         isRightBtn = false;
         isRPush = false;
+        isShooting = false;
     }
 
     /// <summary>
@@ -134,21 +136,21 @@ public class PlayerController : MonoBehaviour
             isStoping = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.A))
         {
             LeftDown();
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.A))
         {
             LeftUp();
         }
 
 
-        if (Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.D))
         {
             RightDown();
         }
-        if (Input.GetKeyUp(KeyCode.RightShift))
+        if (Input.GetKeyUp(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.D))
         {
             RightUp();
         }
@@ -206,10 +208,10 @@ public class PlayerController : MonoBehaviour
 
         if (isShooting)
         {
-            if (isSPush) return;
-            isSPush = true;
+            //if (isSPush) return;
+            //isSPush = true;
 
-            //Debug.Log("공격중");
+            Debug.Log("공격중");
             playerState = Player_State_Enum.Attacking;
         }
     }

@@ -64,7 +64,7 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isCount) return;
+            
             OnClickSettingChang();
         }
     }
@@ -74,6 +74,8 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OnClickSettingChang()
     {
+        if (isCount) return;
+
         Debug.Log("qwe");
         isSettingChang = !isSettingChang;
         if (isSettingChang)

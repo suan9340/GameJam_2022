@@ -39,10 +39,10 @@ public class SpawnManager : MonoBehaviour
     public List<SpawnerInfo> iteminfos = new List<SpawnerInfo>();
     private Player_data playerData = null;
 
-    public static readonly WaitForSeconds enemyDelay = new WaitForSeconds(1.8f);
-    public static readonly WaitForSeconds enemy2Delay = new WaitForSeconds(3.5f);
-    public static readonly WaitForSeconds enemy3Delay = new WaitForSeconds(5f);
-    public static readonly WaitForSeconds itemDelay = new WaitForSeconds(20f);
+    public static readonly WaitForSeconds enemyDelay = new WaitForSeconds(1.5f);
+    public static readonly WaitForSeconds enemy2Delay = new WaitForSeconds(6f);
+    public static readonly WaitForSeconds enemy3Delay = new WaitForSeconds(6f);
+    public static readonly WaitForSeconds itemDelay = new WaitForSeconds(18f);
 
     private Coroutine enemyCor;
     private Coroutine enemy2Cor;
@@ -64,7 +64,7 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(3.5f);
+            yield return new WaitForSeconds(4f);
 
             while (GameManager.Instance.gameState == Game_State_Enum.isSetting) yield return null;
 
