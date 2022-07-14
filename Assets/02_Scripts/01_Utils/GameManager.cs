@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+
+
         MinPosition = new Vector2(-10.4f, -6.2f);
         MaxPosition = new Vector2(10.4f, 6.2f);
 

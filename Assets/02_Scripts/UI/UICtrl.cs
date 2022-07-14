@@ -19,6 +19,7 @@ public class UICtrl : MonoBehaviour
     private bool isSettingChang = false;
     private bool isQuestionChang = false;
 
+    private bool isFirstClick = false;
 
     private void Start()
     {
@@ -28,7 +29,7 @@ public class UICtrl : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isSettingChang)
                 OnClickSettingChang();
@@ -47,8 +48,10 @@ public class UICtrl : MonoBehaviour
     {
         if (playerData.isfirst)
         {
-            playerData.isfirst = false;
+            isFirstClick = true;
 
+            playerData.isfirst = false;
+            OnClickQuestion();
         }
         else
         {
@@ -79,7 +82,14 @@ public class UICtrl : MonoBehaviour
 
     public void OnClickQuestion()
     {
-        isQuestionChang = !isQuestionChang;
+        if (playerData.isfirst)
+        {
+            isFirstClick = true;
+
+            playerData.isfirst = false;
+        }
+
+            isQuestionChang = !isQuestionChang;
         if (isQuestionChang)
         {
             GameManager.Instance.SettingGameState(Game_State_Enum.isSetting);
@@ -88,7 +98,13 @@ public class UICtrl : MonoBehaviour
         }
         else
         {
-            questionObj.rectTransform.DOAnchorPosY(-1772f, 1.5f).SetEase(Ease.OutCirc).SetUpdate(true);
+            if (isFirstClick)
+            {
+                SceneManager.LoadScene(1);
+            }
+
+            else
+                questionObj.rectTransform.DOAnchorPosY(-1772f, 1.5f).SetEase(Ease.OutCirc).SetUpdate(true);
         }
     }
 }
