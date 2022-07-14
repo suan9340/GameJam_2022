@@ -37,15 +37,29 @@ public class ItemMove : MonoBehaviour
     {
         if (collision.CompareTag(ConstantManager.TAG_BULLET))
         {
-            AudioManager.Instance.ItemEat();
-            ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.itemEat, transform.position);
-
             collision.GetComponent<BulletMove>().Despawn();
 
-            Destroy(gameObject);
+            AudioManager.Instance.ItemEat();
+            ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.itemEat, transform.position);
+            CheckItemCurrent();
 
-            if (playerData.playerlevel == 4) return;
-            playerData.playerlevel++;
+            Destroy(gameObject);
+        }
+    }
+
+    private void CheckItemCurrent()
+    {
+        if (playerData.playerlevel == 4) return;
+
+        playerData.playerlevel++;
+
+        if (playerData.playerlevel < 4)
+        {
+            Debug.Log($"¾ÆÀÌÅÛ È¹µæ!   : ÇöÀç ¾ÆÀÌÅÛ {playerData.playerlevel}");
+        }
+        else
+        {
+
         }
     }
 

@@ -39,7 +39,7 @@ public class SpawnManager : MonoBehaviour
     public List<SpawnerInfo> iteminfos = new List<SpawnerInfo>();
     private Player_data playerData = null;
 
-    public static readonly WaitForSeconds enemyDelay = new WaitForSeconds(1.5f);
+    public static readonly WaitForSeconds enemyDelay = new WaitForSeconds(1.3f);
     public static readonly WaitForSeconds enemy2Delay = new WaitForSeconds(6f);
     public static readonly WaitForSeconds enemy3Delay = new WaitForSeconds(6f);
     public static readonly WaitForSeconds itemDelay = new WaitForSeconds(18f);

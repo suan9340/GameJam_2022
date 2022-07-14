@@ -9,6 +9,7 @@ TagManager:
   - BULLET
   - ITEM
   - DESTROYBUL
+  - KINGBULLET
   layers:
   - Default
   - TransparentFX

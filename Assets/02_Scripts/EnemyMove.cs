@@ -25,13 +25,13 @@ public class EnemyMove : MonoBehaviour
 
     private void Awake()
     {
+        playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
         FollowTextUI();
     }
 
     private void Start()
     {
         SetRandomHPEnemy();
-        playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
         UpdateEnemyHP();
     }
     private void Update()
@@ -63,18 +63,29 @@ public class EnemyMove : MonoBehaviour
             enemyhp -= playerData.current_attackPower;
 
             UpdateEnemyHP();
+
             if (enemyhp <= 0)
             {
-                AudioManager.Instance.EnemyDie();
-                ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.enmeyDie, transform.position);
-                ScreentHIt();
-                playerData.current_attackPower += 2f;
-                AddScore(score);
-                ShackeCam(0.4f, 0.15f, 13);
-                enemyhp = 0;
-                Destroy(gameObject);
+                EnemyDie();
             }
         }
+
+        if(collision.CompareTag(ConstantManager.TAG_DESBUL))
+        {
+            EnemyDie();
+        }
+    }
+
+    private void EnemyDie()
+    {
+        AudioManager.Instance.EnemyDie();
+        ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.enmeyDie, transform.position);
+        ScreentHIt();
+        playerData.current_attackPower += 2f;
+        AddScore(score);
+        GameManager.Instance.ShackeCam(0.5f, 0.2f, 13);
+        enemyhp = 0;
+        Destroy(gameObject);
     }
 
     private void IsGameOver()
@@ -100,12 +111,6 @@ public class EnemyMove : MonoBehaviour
     {
         textObj.text = $"{(int)enemyhp}";
     }
-
-    private void ShackeCam(float _dur, float _str, int _vib)
-    {
-        Camera.main.DOShakePosition(_dur, _str, _vib);
-    }
-
     private void AddScore(int _score)
     {
         playerData.score += _score;
