@@ -120,6 +120,7 @@ public class AudioManager : MonoBehaviour
     {
         //BGM.clip = music[Random.Range(0, music.Count)];
         BGM.clip = musicInfo[Random.Range(0, musicInfo.Count)].clip;
+        BGM.volume = BGMSlider.value;
         BGM.Play();
     }
 
