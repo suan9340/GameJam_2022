@@ -61,6 +61,7 @@ public class UICtrl : MonoBehaviour
 
     public void OnClickExitButton()
     {
+        Debug.Log("Game Exit");
         Application.Quit();
     }
 
