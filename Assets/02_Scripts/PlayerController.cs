@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     private void Key()
     {
         isLeftBtn = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.F);
-        isRightBtn = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.J);
+        isRightBtn = Input.GetKey(KeyCode.Semicolon) || Input.GetKey(KeyCode.J);
 
 
         // 공격하고 있는 상태일 때
