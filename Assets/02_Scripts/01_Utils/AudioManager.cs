@@ -46,6 +46,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource BGM;
     public AudioSource FX;
     public AudioSource FX2;
+    public AudioSource FX3;
 
 
     public Slider MasterSlider;
@@ -99,6 +100,7 @@ public class AudioManager : MonoBehaviour
         {
             FX.volume = MasterSlider.value;
             FX2.volume = MasterSlider.value;
+            FX3.volume = MasterSlider.value;
         }
 
         masterVol = MasterSlider.value;
@@ -124,6 +126,8 @@ public class AudioManager : MonoBehaviour
     {
         FX.volume = FXSlider.value;
         FX2.volume = FXSlider.value;
+        FX3.volume = FXSlider.value;
+
         vfxVol = FXSlider.value;
         PlayerPrefs.SetFloat(ConstantManager.VOL_VFX, vfxVol);
         if (vfxVol == 0) isFxStop = true;
@@ -164,8 +168,8 @@ public class AudioManager : MonoBehaviour
 
     public void ItemEat()
     {
-        FX.clip = vFXInfos[3].clip;
-        FX.Play();
+        FX3.clip = vFXInfos[3].clip;
+        FX3.Play();
     }
 
     public void ClickButton()
