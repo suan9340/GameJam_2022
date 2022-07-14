@@ -5,6 +5,8 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 
 [System.Serializable]
+
+
 public class MusicInfo
 {
     public string name;
@@ -58,6 +60,8 @@ public class AudioManager : MonoBehaviour
     private float vfxVol = 1;
     private float masterVol = 1;
 
+    public bool isBGMStop = false; 
+    public bool isFxStop = false; 
     private void Start()
     {
         SetVolume();
@@ -86,11 +90,16 @@ public class AudioManager : MonoBehaviour
 
     public void MasterSoundSlider()
     {
-
+        if (!isBGMStop)
+        {
         BGM.volume = MasterSlider.value;
+        }
+
+        if(!isFxStop)
+        {
         FX.volume = MasterSlider.value;
         FX2.volume = MasterSlider.value;
-
+        }
 
         masterVol = MasterSlider.value;
 
@@ -105,7 +114,10 @@ public class AudioManager : MonoBehaviour
     {
         BGM.volume = BGMSlider.value;
         backVol = BGMSlider.value;
+
         PlayerPrefs.SetFloat(ConstantManager.VOL_BACK, backVol);
+
+        if (backVol == 0) isBGMStop = true;
 
     }
     public void FXSoundSlider()
@@ -114,6 +126,9 @@ public class AudioManager : MonoBehaviour
         FX2.volume = FXSlider.value;
         vfxVol = FXSlider.value;
         PlayerPrefs.SetFloat(ConstantManager.VOL_VFX, vfxVol);
+        if (vfxVol == 0) isFxStop = true;
+      
+
     }
 
     public void RandomPlay()
