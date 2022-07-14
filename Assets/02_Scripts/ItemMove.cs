@@ -10,6 +10,7 @@ public class ItemMove : MonoBehaviour
 
     private bool isGameOver = false;
 
+    private bool isDie = false;
     private void Start()
     {
         playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
@@ -37,6 +38,10 @@ public class ItemMove : MonoBehaviour
     {
         if (collision.CompareTag(ConstantManager.TAG_BULLET))
         {
+            if (isDie) return;
+            isDie = true;
+
+
             collision.GetComponent<BulletMove>().Despawn();
 
             AudioManager.Instance.ItemEat();
