@@ -4,6 +4,7 @@ public static class ConstantManager
     public const string TAG_BULLET = "BULLET";
     public const string TAG_ENEMY = "ENEMY";
     public const string TAG_ITEM = "ITEM";
+    public const string TAG_DESBUL = "DESTROYBUL";
 
 
     public const string INPUT_HO = "Horizontal";

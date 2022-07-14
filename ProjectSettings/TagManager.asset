@@ -8,6 +8,7 @@ TagManager:
   - ENEMY
   - BULLET
   - ITEM
+  - DESTROYBUL
   layers:
   - Default
   - TransparentFX

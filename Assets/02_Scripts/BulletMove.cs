@@ -8,32 +8,11 @@ public class BulletMove : MonoBehaviour
     private void Update()
     {
         Move();
-        CheckLimit();
     }
 
     private void Move()
     {
         transform.localPosition += transform.up * moveSpeed * Time.deltaTime;
-    }
-
-    private void CheckLimit()
-    {
-        if (transform.localPosition.y < GameManager.Instance.MinPosition.y)
-        {
-            Despawn();
-        }
-        if (transform.localPosition.y > GameManager.Instance.MaxPosition.y)
-        {
-            Despawn();
-        }
-        if (transform.localPosition.x < GameManager.Instance.MinPosition.y)
-        {
-            Despawn();
-        }
-        if (transform.localPosition.x > GameManager.Instance.MaxPosition.x)
-        {
-            Despawn();
-        }
     }
 
     public void Despawn()
@@ -46,5 +25,11 @@ public class BulletMove : MonoBehaviour
     {
         transform.position = new Vector3(0, 0, 0);
         transform.rotation = Quaternion.identity;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag(ConstantManager.TAG_DESBUL))
+            Despawn();
     }
 }
