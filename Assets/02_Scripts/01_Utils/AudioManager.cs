@@ -49,7 +49,6 @@ public class AudioManager : MonoBehaviour
     public AudioSource FX3;
 
 
-    public Slider MasterSlider;
     public Slider BGMSlider;
     public Slider FXSlider;
 
@@ -59,8 +58,7 @@ public class AudioManager : MonoBehaviour
 
     private float backVol = 1;
     private float vfxVol = 1;
-    private float masterVol = 1;
-
+    
     public bool isBGMStop = false;
     public bool isFxStop = false;
     private void Start()
@@ -84,33 +82,11 @@ public class AudioManager : MonoBehaviour
         vfxVol = PlayerPrefs.GetFloat(ConstantManager.VOL_VFX, 1f);
         FXSlider.value = vfxVol;
 
-        masterVol = PlayerPrefs.GetFloat(ConstantManager.VOL_Master, 1);
-        MasterSlider.value = masterVol;
+       
 
     }
 
-    public void MasterSoundSlider()
-    {
-        if (!isBGMStop)
-        {
-            BGM.volume = MasterSlider.value;
-        }
-
-        if (!isFxStop)
-        {
-            FX.volume = MasterSlider.value;
-            FX2.volume = MasterSlider.value;
-            FX3.volume = MasterSlider.value;
-        }
-
-        masterVol = MasterSlider.value;
-
-        // backVol = MasterSlider.value;
-        //   vfxVol = MasterSlider.value;
-
-        PlayerPrefs.SetFloat(ConstantManager.VOL_Master, masterVol);
-
-    }
+    
 
     public void BGMSoundSlider()
     {
@@ -119,7 +95,6 @@ public class AudioManager : MonoBehaviour
 
         PlayerPrefs.SetFloat(ConstantManager.VOL_BACK, backVol);
 
-        if (backVol == 0) isBGMStop = true;
 
     }
     public void FXSoundSlider()
@@ -130,7 +105,6 @@ public class AudioManager : MonoBehaviour
 
         vfxVol = FXSlider.value;
         PlayerPrefs.SetFloat(ConstantManager.VOL_VFX, vfxVol);
-        if (vfxVol == 0) isFxStop = true;
 
 
     }
