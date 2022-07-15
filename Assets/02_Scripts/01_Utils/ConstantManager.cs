@@ -14,4 +14,6 @@ public static class ConstantManager
     public const string VOL_VFX = "fxVolume";
     public const string VOL_Master = "masterVolume";
 
+    public const string DATA_HIGHSCORE = "HIGHSCORE";
+
 }

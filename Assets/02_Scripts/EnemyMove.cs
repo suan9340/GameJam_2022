@@ -19,6 +19,9 @@ public class EnemyMove : MonoBehaviour
     [Header("점수 죽였을 때")]
     public int score;
 
+    [Header("적 죽였을 때 얻는 공격력")]
+    public float get_attackPower = 2f;
+
     public float enemyhp;
 
     private bool isGameOver = false;
@@ -32,9 +35,15 @@ public class EnemyMove : MonoBehaviour
     private void Start()
     {
         SetRandomHPEnemy();
-        UpdateEnemyHP();
+        UpdateTextEnemyHP();
     }
     private void Update()
+    {
+        CheckPlayerState();
+        ReadyEnemy();
+    }
+
+    private void CheckPlayerState()
     {
         if (GameManager.Instance.gameState == Game_State_Enum.isSetting) return;
 
@@ -42,7 +51,10 @@ public class EnemyMove : MonoBehaviour
         {
             IsGameOver();
         }
+    }
 
+    private void ReadyEnemy()
+    {
         Move();
         FollowTextUI();
     }
@@ -56,24 +68,24 @@ public class EnemyMove : MonoBehaviour
     {
         if (collision.CompareTag(ConstantManager.TAG_BULLET))
         {
-            ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.enemyHit, transform.position);
-
             collision.GetComponent<BulletMove>().Despawn();
 
-            enemyhp -= playerData.current_attackPower;
-
-            UpdateEnemyHP();
-
-            if (enemyhp <= 0)
-            {
-                EnemyDie();
-            }
+            PlayerDamaged();
         }
+    }
 
-        //if(collision.CompareTag(ConstantManager.TAG_DESBUL))
-        //{
-        //    EnemyDie();
-        //}
+    private void PlayerDamaged()
+    {
+        ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.enemyHit, transform.position);
+
+        enemyhp -= playerData.current_attackPower;
+
+        UpdateTextEnemyHP();
+
+        if (enemyhp <= 0)
+        {
+            EnemyDie();
+        }
     }
 
     private void EnemyDie()
@@ -81,8 +93,9 @@ public class EnemyMove : MonoBehaviour
         AudioManager.Instance.EnemyDie();
         ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.enmeyDie, transform.position);
         ScreentHIt();
-        playerData.current_attackPower += 2f;
-        AddScore(score);
+        playerData.current_attackPower += get_attackPower;
+        GameManager.Instance.AddScore(score);
+        //AddScore(score);
         GameManager.Instance.ShackeCam(0.5f, 0.2f, 13);
         enemyhp = 0;
         Destroy(gameObject);
@@ -107,7 +120,7 @@ public class EnemyMove : MonoBehaviour
         textObj.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 0, 0));
     }
 
-    private void UpdateEnemyHP()
+    private void UpdateTextEnemyHP()
     {
         textObj.text = $"{(int)enemyhp}";
     }

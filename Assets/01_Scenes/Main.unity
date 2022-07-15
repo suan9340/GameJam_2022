@@ -370,6 +370,7 @@ MonoBehaviour:
   ease: 10
   leftBtn: {fileID: 494663129}
   rightBtn: {fileID: 871558821}
+  scoreText: {fileID: 770857036}
 --- !u!4 &42982237
 Transform:
   m_ObjectHideFlags: 0
@@ -4431,7 +4432,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
-  gunItem: {fileID: 1830599585}
 --- !u!4 &961225050
 Transform:
   m_ObjectHideFlags: 0

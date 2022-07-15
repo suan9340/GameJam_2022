@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    private Player_data playerData;
+
     #region SingleTon   
 
     private static UIManager _instance = null;
@@ -58,10 +60,16 @@ public class UIManager : MonoBehaviour
     public Button leftBtn = null;
     public Button rightBtn = null;
 
+    [Header("점수 UI")]
+    public Text scoreText = null;
+
+    private void Awake()
+    {
+        playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
+    }
+
     private void Start()
     {
-        SetResolution();
-
         StartCoroutine(CountDownReadyGame());
     }
 
@@ -71,6 +79,9 @@ public class UIManager : MonoBehaviour
         InputKey();
     }
 
+    /// <summary>
+    /// 플레이어의 키 입력 상태를 체크하는 함수
+    /// </summary>
     private void InputKey()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -128,6 +139,12 @@ public class UIManager : MonoBehaviour
             StartCoroutine(CountDownReadyGame());
         }
     }
+
+
+    /// <summary>
+    /// 3 2 1 카운트 다운 코루틴
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator CountDownReadyGame()
     {
         isCount = true;
@@ -146,6 +163,9 @@ public class UIManager : MonoBehaviour
         isCount = false;
     }
 
+    /// <summary>
+    /// 적 죽였을 떄 화면 테두리 하얗게 되는거
+    /// </summary>
     public void HitScreen()
     {
         StartCoroutine(ScreenHit());
@@ -184,16 +204,7 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-
-    private void SetResolution()
-    {
-        int _width = 1920;
-        int _height = 1080;
-
-        Screen.SetResolution(_width, _height, true);
-        Screen.SetResolution(Screen.width, (Screen.width * 16) / 9, true);
-    }
-
+    #region 버튼 색 바꾸는거
     public void LeftBtnActive()
     {
         leftBtn.image.color = leftBtn.colors.pressedColor;
@@ -218,5 +229,15 @@ public class UIManager : MonoBehaviour
     {
         rightBtn.image.color = rightBtn.colors.selectedColor;
         leftBtn.image.color = leftBtn.colors.selectedColor;
+    }
+    #endregion
+
+
+    /// <summary>
+    /// 플레이어 점수 업데이트 해주는 함수
+    /// </summary>
+    public void UpdateUI()
+    {
+        scoreText.text = $"{playerData.score}";
     }
 }

@@ -74,8 +74,6 @@ public class PlayerController : MonoBehaviour
         // 공격하고 있는 상태일 때
         if (isLeftBtn && isRightBtn)
         {
-            //UIManager.Instance.LeftBtnActive();
-            //UIManager.Instance.RightBtnActive();
             UIManager.Instance.TwoBtn();
             playerState = Player_State_Enum.Attacking;
         }

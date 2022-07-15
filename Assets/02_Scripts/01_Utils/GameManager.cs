@@ -35,8 +35,7 @@ public class GameManager : MonoBehaviour
     public Vector2 MinPosition { get; private set; }
     public Vector2 MaxPosition { get; private set; }
 
-    [Header("±¤¼± ¾ÆÀÌÅÛ")]
-    public GameObject gunItem = null;
+    private float highScore = 0;
 
     private void Awake()
     {
@@ -55,8 +54,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
-
         MinPosition = new Vector2(-10.4f, -6.2f);
         MaxPosition = new Vector2(10.4f, 6.2f);
 
@@ -73,8 +70,14 @@ public class GameManager : MonoBehaviour
         Camera.main.DOShakePosition(_dur, _str, _vib).OnComplete(() => { Camera.main.transform.position = new Vector3(0, 0, -10); });
     }
 
-    public void ItemGunStart()
+    public void AddScore(long _addScore)
     {
-        gunItem.SetActive(true);
+        playerData.score += _addScore;
+        //if (playerData.score > highScore)
+        //{
+        //    highScore = playerData.score;
+        //    PlayerPrefs.SetInt(ConstantManager.DATA_HIGHSCORE, (int)highScore);
+        //}
+        UIManager.Instance.UpdateUI();
     }
 }
