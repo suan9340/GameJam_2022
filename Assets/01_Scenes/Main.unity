@@ -3460,7 +3460,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: SCORE
+  m_Text: 0
 --- !u!222 &770857037
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9116,6 +9116,7 @@ MonoBehaviour:
   lowhp: 10
   textObj: {fileID: 3006284112671166028}
   score: 80
+  get_attackPower: 2
   enemyhp: 0
 --- !u!50 &3793090602924504967
 Rigidbody2D:
