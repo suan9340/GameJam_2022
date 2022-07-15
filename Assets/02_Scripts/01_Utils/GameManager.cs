@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
     public Vector2 MinPosition { get; private set; }
     public Vector2 MaxPosition { get; private set; }
 
-    private float highScore = 0;
 
     private void Awake()
     {

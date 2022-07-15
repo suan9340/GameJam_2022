@@ -28,9 +28,13 @@ public class GameOver : MonoBehaviour
     private readonly int maxTime = 30;
     public int currentTime;
 
+    private int highScore;
+
+
     private void Awake()
     {
         playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
+        highScore = PlayerPrefs.GetInt(ConstantManager.DATA_HIGHSCORE, 0);
         currentTime = maxTime;
     }
 
@@ -55,18 +59,20 @@ public class GameOver : MonoBehaviour
         CheckHighScore();
 
         scoreText.text = $"SCORE : {playerData.score}";
-        highScoreText.text = $"HIGHSCORE : {playerData.bestScore}";
+        //highScoreText.text = $"HIGHSCORE : {playerData.bestScore}";
+        highScoreText.text = $"HIGHSCORE : {PlayerPrefs.GetInt(ConstantManager.DATA_HIGHSCORE, 500)}";
     }
 
     private void CheckHighScore()
     {
         var _score = playerData.score;
-        var _highScore = playerData.bestScore;
 
-        if (_score > _highScore)
+        if (_score > highScore)
         {
+            Debug.Log("최고기록 갱신!");
             NewRecord();
-            playerData.bestScore = _score;
+            highScore = (int)_score;
+            PlayerPrefs.SetInt(ConstantManager.DATA_HIGHSCORE, highScore);
         }
     }
 

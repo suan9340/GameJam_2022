@@ -88,15 +88,25 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    private void EnemyDie()
+    protected virtual void EnemyDie()
     {
+        // 사운드 && 이펙트 
         AudioManager.Instance.EnemyDie();
         ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.enmeyDie, transform.position);
-        ScreentHIt();
-        playerData.current_attackPower += get_attackPower;
-        GameManager.Instance.AddScore(score);
-        //AddScore(score);
+
+        // 카메라 쉐이킹 및 피격 테두리 처리
         GameManager.Instance.ShackeCam(0.5f, 0.2f, 13);
+        ScreentHIt();
+
+        // 플레이어의 공격력 증가
+        playerData.current_attackPower += get_attackPower;
+
+
+        // 점수추가 및 유아이 업뎃
+        AddScore(score);
+        UIManager.Instance.UpdateUI();
+
+
         enemyhp = 0;
         Destroy(gameObject);
     }
