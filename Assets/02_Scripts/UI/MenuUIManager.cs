@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class UICtrl : MonoBehaviour
+public class MenuUIManager : MonoBehaviour
 {
     private Player_data playerData = null;
 
