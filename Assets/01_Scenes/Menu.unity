@@ -782,7 +782,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3062,7 +3062,6 @@ MonoBehaviour:
   FX: {fileID: 272852256}
   FX2: {fileID: 1373907942}
   FX3: {fileID: 37257563}
-  MasterSlider: {fileID: 0}
   BGMSlider: {fileID: 1885167126}
   FXSlider: {fileID: 1893166819}
   musicInfo: []
