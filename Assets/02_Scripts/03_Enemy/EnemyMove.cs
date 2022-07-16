@@ -39,18 +39,14 @@ public class EnemyMove : MonoBehaviour
     }
     private void Update()
     {
-        CheckPlayerState();
-        ReadyEnemy();
-    }
-
-    private void CheckPlayerState()
-    {
         if (GameManager.Instance.gameState == Game_State_Enum.isSetting) return;
 
         if (GameManager.Instance.gameState == Game_State_Enum.isDie)
         {
             IsGameOver();
         }
+
+        ReadyEnemy();
     }
 
     private void ReadyEnemy()

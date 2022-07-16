@@ -30,7 +30,6 @@ public class GameOver : MonoBehaviour
 
     private int highScore;
 
-
     private void Awake()
     {
         playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
@@ -59,7 +58,6 @@ public class GameOver : MonoBehaviour
         CheckHighScore();
 
         scoreText.text = $"SCORE : {playerData.score}";
-        //highScoreText.text = $"HIGHSCORE : {playerData.bestScore}";
         highScoreText.text = $"HIGHSCORE : {PlayerPrefs.GetInt(ConstantManager.DATA_HIGHSCORE, 500)}";
     }
 

@@ -41,15 +41,15 @@ public class GameManager : MonoBehaviour
         playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
     }
 
-    private void OnEnable()
-    {
-        if (playerData.isfirst)
-        {
-            playerData.isfirst = false;
+    //private void OnEnable()
+    //{
+    //    if (playerData.isfirst)
+    //    {
+    //        playerData.isfirst = false;
 
-            UIManager.Instance.OnClickQuestion();
-        }
-    }
+    //        UIManager.Instance.OnClickQuestion();
+    //    }
+    //}
 
     private void Start()
     {

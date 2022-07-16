@@ -15,5 +15,6 @@ public static class ConstantManager
     public const string VOL_Master = "masterVolume";
 
     public const string DATA_HIGHSCORE = "HIGHSCORE";
+    public const string DATA_VISIT = "FirstVisit";
 
 }
