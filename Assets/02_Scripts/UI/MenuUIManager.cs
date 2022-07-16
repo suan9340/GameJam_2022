@@ -46,25 +46,35 @@ public class MenuUIManager : MonoBehaviour
     /// </summary>
     public void OnClickStartButton()
     {
-        if (playerData.isfirst)
-        {
-            isFirstClick = true;
+        //if (playerData.isfirst)
+        //{
+        //    isFirstClick = true;
 
-            playerData.isfirst = false;
-            OnClickQuestion();
-        }
-        else
-        {
-            SceneManager.LoadScene(1);
-        }
+        //    playerData.isfirst = false;
+        //    OnClickQuestion();
+        //}
+        //else
+        //{
+        //    SceneManager.LoadScene(1);
+        //}
+
+        SceneManager.LoadScene(1);
     }
 
+
+    /// <summary>
+    /// 게임 종료 버튼
+    /// </summary>
     public void OnClickExitButton()
     {
         Debug.Log("Game Exit");
         Application.Quit();
     }
 
+
+    /// <summary>
+    /// 설정 창 눌렀을 때
+    /// </summary>
     public void OnClickSettingChang()
     {
         isSettingChang = !isSettingChang;
@@ -81,16 +91,19 @@ public class MenuUIManager : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// ?표 창 눌렀을 때
+    /// </summary>
     public void OnClickQuestion()
     {
-        if (playerData.isfirst)
-        {
-            isFirstClick = true;
+        //if (playerData.isfirst)
+        //{
+        //    isFirstClick = true;
 
-            playerData.isfirst = false;
-        }
+        //    playerData.isfirst = false;
+        //}
 
-            isQuestionChang = !isQuestionChang;
+        isQuestionChang = !isQuestionChang;
         if (isQuestionChang)
         {
             GameManager.Instance.SettingGameState(Game_State_Enum.isSetting);
@@ -99,13 +112,14 @@ public class MenuUIManager : MonoBehaviour
         }
         else
         {
-            if (isFirstClick)
-            {
-                SceneManager.LoadScene(1);
-            }
+            questionObj.rectTransform.DOAnchorPosY(-1772f, 1.5f).SetEase(Ease.OutCirc).SetUpdate(true);
+            //if (isFirstClick)
+            //{
+            //    SceneManager.LoadScene(1);
+            //}
 
-            else
-                questionObj.rectTransform.DOAnchorPosY(-1772f, 1.5f).SetEase(Ease.OutCirc).SetUpdate(true);
+            //else
+            //    questionObj.rectTransform.DOAnchorPosY(-1772f, 1.5f).SetEase(Ease.OutCirc).SetUpdate(true);
         }
     }
 }
