@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class UICtrl : MonoBehaviour
+public class MenuUIManager : MonoBehaviour
 {
     private Player_data playerData = null;
 
@@ -19,10 +19,12 @@ public class UICtrl : MonoBehaviour
     private bool isSettingChang = false;
     private bool isQuestionChang = false;
 
-    private bool isFirstClick = false;
+    private int isFirstVisit;
+    private bool isClickStart = false;
 
     private void Start()
     {
+        isFirstVisit = PlayerPrefs.GetInt(ConstantManager.DATA_VISIT, 0);
         playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
         Application.targetFrameRate = 200;
     }
@@ -46,25 +48,32 @@ public class UICtrl : MonoBehaviour
     /// </summary>
     public void OnClickStartButton()
     {
-        if (playerData.isfirst)
+        if (isFirstVisit == 0)
         {
-            isFirstClick = true;
-
-            playerData.isfirst = false;
+            isClickStart = true;
             OnClickQuestion();
         }
         else
         {
             SceneManager.LoadScene(1);
         }
+
     }
 
+
+    /// <summary>
+    /// 게임 종료 버튼
+    /// </summary>
     public void OnClickExitButton()
     {
         Debug.Log("Game Exit");
         Application.Quit();
     }
 
+
+    /// <summary>
+    /// 설정 창 눌렀을 때
+    /// </summary>
     public void OnClickSettingChang()
     {
         isSettingChang = !isSettingChang;
@@ -81,16 +90,18 @@ public class UICtrl : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// ?표 창 눌렀을 때
+    /// </summary>
     public void OnClickQuestion()
     {
-        if (playerData.isfirst)
+        if (isFirstVisit == 0)
         {
-            isFirstClick = true;
-
-            playerData.isfirst = false;
+            isFirstVisit = 1;
+            PlayerPrefs.SetInt(ConstantManager.DATA_VISIT, isFirstVisit);
         }
 
-            isQuestionChang = !isQuestionChang;
+        isQuestionChang = !isQuestionChang;
         if (isQuestionChang)
         {
             GameManager.Instance.SettingGameState(Game_State_Enum.isSetting);
@@ -99,13 +110,15 @@ public class UICtrl : MonoBehaviour
         }
         else
         {
-            if (isFirstClick)
+            if (isClickStart)
             {
+                isClickStart = false;
                 SceneManager.LoadScene(1);
             }
 
             else
                 questionObj.rectTransform.DOAnchorPosY(-1772f, 1.5f).SetEase(Ease.OutCirc).SetUpdate(true);
+
         }
     }
 }

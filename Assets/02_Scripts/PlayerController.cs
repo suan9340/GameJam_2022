@@ -67,25 +67,35 @@ public class PlayerController : MonoBehaviour
 
     private void Key()
     {
-        isLeftBtn = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.F);
-        isRightBtn = Input.GetKey(KeyCode.Semicolon) || Input.GetKey(KeyCode.J);
+        isLeftBtn = Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.F);
+        isRightBtn = Input.GetKey(KeyCode.P) || Input.GetKey(KeyCode.J);
 
 
         // 공격하고 있는 상태일 때
         if (isLeftBtn && isRightBtn)
         {
+            UIManager.Instance.TwoBtn();
             playerState = Player_State_Enum.Attacking;
         }
         else if (isRightBtn)
         {
+            UIManager.Instance.RightBtnActive();
+            UIManager.Instance.LeftBtnFalse();
+
             playerState = Player_State_Enum.RightRotating;
         } // 오른쪽키를 때면
         else if (isLeftBtn)
         {
+            UIManager.Instance.LeftBtnActive();
+            UIManager.Instance.RightBtnFalse();
+
             playerState = Player_State_Enum.LeftRotating;
         } // 둘다 때면
         else
         {
+            UIManager.Instance.RightBtnFalse();
+            UIManager.Instance.LeftBtnFalse();
+
             playerState = Player_State_Enum.Stoping;
         }
     }

@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    private Player_data playerData;
+
     #region SingleTon   
 
     private static UIManager _instance = null;
@@ -54,10 +56,20 @@ public class UIManager : MonoBehaviour
     public GameObject gameOverObj = null;
     public Ease ease;
 
+    [Header("좌 우 버튼 오브젝트")]
+    public Button leftBtn = null;
+    public Button rightBtn = null;
+
+    [Header("점수 UI")]
+    public Text scoreText = null;
+
+    private void Awake()
+    {
+        playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
+    }
+
     private void Start()
     {
-        SetResolution();
-
         StartCoroutine(CountDownReadyGame());
     }
 
@@ -67,6 +79,9 @@ public class UIManager : MonoBehaviour
         InputKey();
     }
 
+    /// <summary>
+    /// 플레이어의 키 입력 상태를 체크하는 함수
+    /// </summary>
     private void InputKey()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -124,6 +139,12 @@ public class UIManager : MonoBehaviour
             StartCoroutine(CountDownReadyGame());
         }
     }
+
+
+    /// <summary>
+    /// 3 2 1 카운트 다운 코루틴
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator CountDownReadyGame()
     {
         isCount = true;
@@ -142,6 +163,9 @@ public class UIManager : MonoBehaviour
         isCount = false;
     }
 
+    /// <summary>
+    /// 적 죽였을 떄 화면 테두리 하얗게 되는거
+    /// </summary>
     public void HitScreen()
     {
         StartCoroutine(ScreenHit());
@@ -180,13 +204,40 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-
-    private void SetResolution()
+    #region 버튼 색 바꾸는거
+    public void LeftBtnActive()
     {
-        int _width = 1920;
-        int _height = 1080;
+        leftBtn.image.color = leftBtn.colors.pressedColor;
+    }
 
-        Screen.SetResolution(_width, _height, true);
-        Screen.SetResolution(Screen.width, (Screen.width * 16) / 9, true);
+    public void RightBtnActive()
+    {
+        rightBtn.image.color = rightBtn.colors.pressedColor;
+    }
+
+    public void LeftBtnFalse()
+    {
+        leftBtn.image.color = leftBtn.colors.normalColor;
+    }
+
+    public void RightBtnFalse()
+    {
+        rightBtn.image.color = rightBtn.colors.normalColor;
+    }
+
+    public void TwoBtn()
+    {
+        rightBtn.image.color = rightBtn.colors.selectedColor;
+        leftBtn.image.color = leftBtn.colors.selectedColor;
+    }
+    #endregion
+
+
+    /// <summary>
+    /// 플레이어 점수 업데이트 해주는 함수
+    /// </summary>
+    public void UpdateUI()
+    {
+        scoreText.text = $"{playerData.score}";
     }
 }

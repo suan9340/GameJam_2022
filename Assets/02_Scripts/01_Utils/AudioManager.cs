@@ -152,6 +152,12 @@ public class AudioManager : MonoBehaviour
         FX.Play();
     }
 
+
+    public void OnClickStart()
+    {
+        BGM.Stop();
+    }
+
 }
 
 

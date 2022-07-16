@@ -11,7 +11,6 @@ public class Player_data : ScriptableObject
     public float max_attackPower;
     public float moveSpeed;
     public float score;
-    public float bestScore;
     public float playerlevel;
 
     public bool isfirst;
