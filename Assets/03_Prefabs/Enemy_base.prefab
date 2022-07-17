@@ -335,6 +335,7 @@ MonoBehaviour:
   lowhp: 70
   textObj: {fileID: 1549962527}
   score: 70
+  get_attackPower: 0.5
   enemyhp: 0
 --- !u!50 &2097468746018272468
 Rigidbody2D:

@@ -73,8 +73,8 @@ public class EnemyMove : MonoBehaviour
     private void PlayerDamaged()
     {
         ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.enemyHit, transform.position);
-
         enemyhp -= playerData.current_attackPower;
+
 
         if (enemyhp <= 0)
         {
@@ -84,6 +84,7 @@ public class EnemyMove : MonoBehaviour
         {
             UpdateTextEnemyHP();
         }
+
     }
 
     protected virtual void EnemyDie()
@@ -104,8 +105,7 @@ public class EnemyMove : MonoBehaviour
         AddScore(score);
         UIManager.Instance.UpdateUI();
 
-
-        enemyhp = 0;
+        //enemyhp = 0;
         Destroy(gameObject);
     }
 

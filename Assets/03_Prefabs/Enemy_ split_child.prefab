@@ -356,4 +356,5 @@ MonoBehaviour:
   lowhp: 30
   textObj: {fileID: 7102974020804395789}
   score: 20
+  get_attackPower: 0.2
   enemyhp: 0

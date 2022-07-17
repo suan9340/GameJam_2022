@@ -56,7 +56,6 @@ public class SpawnManager : MonoBehaviour
         enemyCor = StartCoroutine(ReadySpawnEnemy());
         enemy2Cor = StartCoroutine(ReadyEnemy2Spawn());
         enemy3Cor = StartCoroutine(ReadyEnemy3Spawn());
-
         itemCor = StartCoroutine(ReadyItemSpawn());
     }
 

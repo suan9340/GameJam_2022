@@ -2787,7 +2787,7 @@ MonoBehaviour:
   - name: "\uC67C\uCABD \uB300\uAC01\uC120 \uC544\uB798"
     transform: {fileID: 2061060278}
     obj: {fileID: 1222229440}
-  upPower: 2
+  upPower: 2.4
   downPower: 3.8
 --- !u!50 &671434563
 Rigidbody2D:

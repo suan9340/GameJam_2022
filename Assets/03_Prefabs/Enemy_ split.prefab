@@ -356,5 +356,6 @@ MonoBehaviour:
   lowhp: 60
   textObj: {fileID: 5140324817759993004}
   score: 50
-  childEnemy: {fileID: 9189983766122756802, guid: 1626702011f7c13439d6e9ef4487992a, type: 3}
+  get_attackPower: 0.1
   enemyhp: 0
+  childEnemy: {fileID: 9189983766122756802, guid: 1626702011f7c13439d6e9ef4487992a, type: 3}
