@@ -76,11 +76,13 @@ public class EnemyMove : MonoBehaviour
 
         enemyhp -= playerData.current_attackPower;
 
-        UpdateTextEnemyHP();
-
         if (enemyhp <= 0)
         {
             EnemyDie();
+        }
+        else
+        {
+            UpdateTextEnemyHP();
         }
     }
 
