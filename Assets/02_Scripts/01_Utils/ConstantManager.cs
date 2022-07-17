@@ -17,4 +17,11 @@ public static class ConstantManager
     public const string DATA_HIGHSCORE = "HIGHSCORE";
     public const string DATA_VISIT = "FirstVisit";
 
+
+    public const string RANK_PL_NAME = "CurrentPlayerName";
+    public const string RANK_PL_SCORE = "CurrentPlayerScore";
+
+    public const string RANK_BESTSCORE = "BestScore";
+    public const string RANK_BESTNAME = "BestName";
+
 }

@@ -66,11 +66,11 @@ public class EnemyMove : MonoBehaviour
         {
             collision.GetComponent<BulletMove>().Despawn();
 
-            PlayerDamaged();
+            EnemyDamaged();
         }
     }
 
-    private void PlayerDamaged()
+    protected virtual void EnemyDamaged()
     {
         ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.enemyHit, transform.position);
         enemyhp -= playerData.current_attackPower;

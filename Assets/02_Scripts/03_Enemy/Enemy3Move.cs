@@ -6,5 +6,15 @@ using DG.Tweening;
 
 public class Enemy3Move : EnemyMove
 {
+    protected override void EnemyDamaged()
+    {
+        base.EnemyDamaged();
 
+        BackPos();
+    }
+
+    private void BackPos()
+    {
+        var _currentPos = transform.position;
+    }
 }

@@ -13,7 +13,6 @@ public class Enemy2Move : EnemyMove
     {
         base.EnemyDie();
         ComeOnBabyEnemy();
-
     }
 
     private void ComeOnBabyEnemy()
