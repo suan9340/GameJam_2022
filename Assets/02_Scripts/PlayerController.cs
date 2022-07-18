@@ -11,6 +11,13 @@ public class playergunInfo
     public GameObject obj;
 }
 
+[System.Serializable]
+public class playerAttackDown
+{
+    public string name;
+    public float score;
+}
+
 public class PlayerController : MonoBehaviour
 {
     private Player_data playerData = null;
@@ -21,8 +28,8 @@ public class PlayerController : MonoBehaviour
     public static readonly WaitForSeconds playerDelay = new WaitForSeconds(0.1f);
 
     // 키 입력받는 bool
-    public bool isLeftBtn = false;
-    public bool isRightBtn = false;
+    private bool isLeftBtn = false;
+    private bool isRightBtn = false;
 
     [Header("총알 프리팹")]
     public GameObject bulletObj = null;
@@ -35,6 +42,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("공격력이 감소하는 속도")]
     public float downPower = 5f;
+
+    [Header("점수에 따른 공격력 증가")]
+    public List<playerAttackDown> attackDowns = new List<playerAttackDown>();
 
     private void Awake()
     {
@@ -248,6 +258,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        CheckScoreAndSetPlayerAttacked();
         playerData.current_attackPower -= downPower * Time.deltaTime;
     }
 
@@ -262,10 +273,17 @@ public class PlayerController : MonoBehaviour
             UIManager.Instance.GameOver();
             Debug.Log("GameOut");
         }
+    }
 
-        //if (collision.CompareTag(ConstantManager.TAG_ITEM))
-        //{
-        //    Destroy(collision.gameObject);
-        //}
+
+    /// <summary>
+    /// 점수에 따른 공격력 감소 정도를 세팅해주는 함수
+    /// </summary>
+    private void CheckScoreAndSetPlayerAttacked()
+    {
+        if (playerData.score > attackDowns[0].score)
+        {
+            downPower = 4f;
+        }
     }
 }

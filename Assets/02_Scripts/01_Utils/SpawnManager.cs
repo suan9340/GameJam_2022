@@ -42,7 +42,7 @@ public class SpawnManager : MonoBehaviour
     public static readonly WaitForSeconds enemyDelay = new WaitForSeconds(1.3f);
     public static readonly WaitForSeconds enemy2Delay = new WaitForSeconds(6f);
     public static readonly WaitForSeconds enemy3Delay = new WaitForSeconds(6f);
-    public static readonly WaitForSeconds itemDelay = new WaitForSeconds(18f);
+    public static readonly WaitForSeconds itemDelay = new WaitForSeconds(25f);
 
     private Coroutine enemyCor;
     private Coroutine enemy2Cor;
