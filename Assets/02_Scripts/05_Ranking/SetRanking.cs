@@ -19,6 +19,7 @@ public class SetRanking : MonoBehaviour
 
     private readonly string BestScore = ConstantManager.RANK_BESTSCORE;
     private readonly string BestName = ConstantManager.RANK_BESTNAME;
+
     public void ScoreSet(int _currentScore, string _currentName)
     {
         PlayerPrefs.SetString(CurrentPlayerName, _currentName);
@@ -57,8 +58,5 @@ public class SetRanking : MonoBehaviour
         }
     }
 
-    public void ShowRanking()
-    {
-
-    }
+   
 }

@@ -9,31 +9,24 @@ public class RankManager : MonoBehaviour
     public InputField nameInputField = null;
     public InputField scoreInputField = null;
 
-    private string name;
-    private int score;
+    private string playerName = "";
+    private string playerScore;
 
-    /// <summary>
-    /// Name InputField 값을 가져오는 함수
-    /// </summary>
-    public void GetNameValue(Text _text)
+    [Header("Text")]
+    public Text currentScoreTxt = null;
+    public Text currentNameTxt = null;
+
+    private void Update()
     {
-        name = _text.text;
-        //Debug.Log($"입력 이름 값 : {name}");
-
-
-        _text.text = nameInputField.text;
+        InputKey();
     }
 
-
-    /// <summary>
-    /// Score InputField 값을 가져오는 함수
-    /// </summary>
-    public void GetScoreInputField(Text _text)
+    public void InputKey()
     {
-        score = int.Parse(_text.text);
-        //Debug.Log($"입력 점수 값 : {score}");
-
-        _text.text = scoreInputField.text;
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            OnClickRankSet();
+        }
     }
 
     /// <summary>
@@ -41,6 +34,22 @@ public class RankManager : MonoBehaviour
     /// </summary>
     public void OnClickRankSet()
     {
-        Debug.Log($"이름 : {name} , 점수 {score}");
+        if (nameInputField.text == null || nameInputField.text == "")
+        {
+            Debug.Log("이름을 입력해주세요!");
+            return;
+        }
+        else
+        {
+            playerName = nameInputField.text;
+            PlayerPrefs.SetString(ConstantManager.RANK_PL_NAME, playerName);
+
+            Debug.Log(playerName);
+        }
+    }
+
+    public void ShowRanking()
+    {
+
     }
 }
