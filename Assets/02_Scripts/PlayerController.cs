@@ -21,7 +21,10 @@ public class playerAttackDown
 public class PlayerController : MonoBehaviour
 {
     private Player_data playerData = null;
+
+    [Header("ENUMS")]
     public Player_State_Enum playerState;
+
 
     public static readonly WaitForSeconds shootDelay = new WaitForSeconds(0.16f);
     public static readonly WaitForSeconds powerDelay = new WaitForSeconds(0.06f);
@@ -54,7 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         //GameManager.Instance.ItemGunStart();
         StartCoroutine(PlayerAction());
-        AudioManager.Instance.RandomPlay(); 
+        AudioManager.Instance.RandomPlay();
     }
 
     private void Update()
@@ -124,11 +127,15 @@ public class PlayerController : MonoBehaviour
             {
                 case Player_State_Enum.LeftRotating:
                     LeftRotate();
+
+                    if (GameManager.Instance.playerItemState == Player_Item_State.Staring) break;
                     PowerDown();
                     break;
 
                 case Player_State_Enum.RightRotating:
                     RightRotate();
+
+                    if (GameManager.Instance.playerItemState == Player_Item_State.Staring) break;
                     PowerDown();
                     break;
 

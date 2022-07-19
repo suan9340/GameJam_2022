@@ -63,6 +63,9 @@ public class UIManager : MonoBehaviour
     [Header("점수 UI")]
     public Text scoreText = null;
 
+    [Header("별 아이템 먹었을 때 UI")]
+    public Image starAttackBar = null;
+
     private void Awake()
     {
         playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
@@ -240,5 +243,17 @@ public class UIManager : MonoBehaviour
     public void UpdateUI()
     {
         scoreText.text = $"{playerData.score}";
+    }
+
+
+    /// <summary>
+    /// 별 아이템 먹었을 때 공격력 bar가 변하도록
+    /// </summary>
+    public void ChangeAttackBar(bool _isA)
+    {
+        if (_isA)
+            starAttackBar.gameObject.SetActive(true);
+        else
+            starAttackBar.gameObject.SetActive(false);
     }
 }

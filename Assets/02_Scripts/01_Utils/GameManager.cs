@@ -26,7 +26,9 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    [Header("ENUMS")]
     public Game_State_Enum gameState;
+    public Player_Item_State playerItemState;
 
     private Player_data playerData = null;
 
@@ -62,6 +64,11 @@ public class GameManager : MonoBehaviour
     public void SettingGameState(Game_State_Enum _state)
     {
         gameState = _state;
+    }
+
+    public void SettingItemState(Player_Item_State _state)
+    {
+        playerItemState = _state;
     }
 
     public void ShackeCam(float _dur, float _str, int _vib)

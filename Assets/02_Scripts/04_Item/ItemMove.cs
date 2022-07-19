@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemMove : MonoBehaviour
 {
-    private Player_data playerData;
+    protected Player_data playerData;
     [SerializeField] private Vector2 followTarget = Vector2.zero;
     [SerializeField] private float moveSpeed = 1f;
 
@@ -43,19 +43,24 @@ public class ItemMove : MonoBehaviour
 
             collision.GetComponent<BulletMove>().Despawn();
 
-            AudioManager.Instance.ItemEat();
-            ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.itemEat, transform.position);
-            CheckItemCurrent();
-
-            Destroy(gameObject);
+            ItemEat();
         }
+    }
+
+    protected virtual void ItemEat()
+    {
+        AudioManager.Instance.ItemEat();
+        ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.itemEat, transform.position);
+        CheckItemCurrent();
+        Destroy(gameObject);
     }
 
     private void CheckItemCurrent()
     {
-        if (playerData.playerlevel == 4)
+        if (playerData.playerlevel >= 4)
         {
             playerData.score += 200;
+            UIManager.Instance.UpdateUI();
             return;
         }
         playerData.playerlevel++;

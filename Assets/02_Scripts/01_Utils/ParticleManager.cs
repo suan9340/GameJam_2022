@@ -31,6 +31,7 @@ public class ParticleManager : MonoBehaviour
         enemyHit,
         enmeyDie,
         itemEat,
+        item2Eat,
         playerDie,
     }
 
@@ -63,6 +64,13 @@ public class ParticleManager : MonoBehaviour
                 if (false == particleDic.ContainsKey(pt))
                 {
                     particleDic[pt] = Resources.Load<GameObject>("VFX/playerDead");
+                }
+                break;
+
+            case ParticleType.item2Eat:
+                if(false == particleDic.ContainsKey(pt))
+                {
+                    particleDic[pt] = Resources.Load<GameObject>("VFX/Item2Eat");
                 }
                 break;
 
