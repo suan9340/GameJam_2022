@@ -16,6 +16,5 @@ MonoBehaviour:
   max_attackPower: 50
   moveSpeed: 90
   score: 0
-  bestScore: 0
   playerlevel: 0
   isfirst: 0

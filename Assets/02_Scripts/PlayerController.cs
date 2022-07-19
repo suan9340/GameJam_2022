@@ -281,9 +281,35 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void CheckScoreAndSetPlayerAttacked()
     {
-        if (playerData.score > attackDowns[0].score)
+        if (playerData.score < attackDowns[0].score)
         {
+            upPower = 2.4f;
+            downPower = 3.8f;
+        }
+        else if (playerData.score < attackDowns[1].score)
+        {
+            upPower = 2f;
             downPower = 4f;
+        }
+        else if (playerData.score < attackDowns[2].score)
+        {
+            upPower = 1.5f;
+            downPower = 4.6f;
+        }
+        else if (playerData.score < attackDowns[3].score)
+        {
+            upPower = 1.2f;
+            downPower = 5.3f;
+        }
+        else if (playerData.score < attackDowns[4].score)
+        {
+            upPower = 1f;
+            downPower = 6f;
+        }
+        else if (playerData.score < attackDowns[5].score)
+        {
+            upPower = 0.7f;
+            downPower = 7f;
         }
     }
 }

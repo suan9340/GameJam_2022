@@ -39,14 +39,17 @@ public class SpawnManager : MonoBehaviour
     public List<SpawnerInfo> iteminfos = new List<SpawnerInfo>();
     private Player_data playerData = null;
 
-    public static readonly WaitForSeconds enemyDelay = new WaitForSeconds(1.3f);
-    public static readonly WaitForSeconds enemy2Delay = new WaitForSeconds(6f);
-    public static readonly WaitForSeconds enemy3Delay = new WaitForSeconds(6f);
-    public static readonly WaitForSeconds itemDelay = new WaitForSeconds(25f);
+    private readonly WaitForSeconds enemyDelay = new WaitForSeconds(1.3f);
+    private readonly WaitForSeconds enemy2Delay = new WaitForSeconds(6f);
+    private readonly WaitForSeconds enemy3Delay = new WaitForSeconds(6f);
+    private readonly WaitForSeconds enemy4Delay = new WaitForSeconds(10f);
+
+    private readonly WaitForSeconds itemDelay = new WaitForSeconds(12f);
 
     private Coroutine enemyCor;
     private Coroutine enemy2Cor;
     private Coroutine enemy3Cor;
+    private Coroutine enemy4Cor;
     private Coroutine itemCor;
 
     void Start()
@@ -56,6 +59,8 @@ public class SpawnManager : MonoBehaviour
         enemyCor = StartCoroutine(ReadySpawnEnemy());
         enemy2Cor = StartCoroutine(ReadyEnemy2Spawn());
         enemy3Cor = StartCoroutine(ReadyEnemy3Spawn());
+        enemy4Cor = StartCoroutine(ReadyEnemy4Spawn());
+
         itemCor = StartCoroutine(ReadyItemSpawn());
     }
 
@@ -114,6 +119,8 @@ public class SpawnManager : MonoBehaviour
             {
                 Debug.Log("적3 스폰은 그만!\n");
                 StopCoroutine(enemy3Cor);
+
+                yield break;
             }
 
             Debug.Log("enemy3 스폰 시작");
@@ -124,6 +131,29 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    private IEnumerator ReadyEnemy4Spawn()
+    {
+        while(true)
+        {
+            while (GameManager.Instance.gameState == Game_State_Enum.isSetting) yield return null;
+
+            while (playerData.score < enemyinfos[3].outScore) yield return null;
+
+            if (GameManager.Instance.gameState == Game_State_Enum.isDie)
+            {
+                Debug.Log("적4 스폰은 그만!\n");
+                StopCoroutine(enemy4Cor);
+
+                yield break;
+            };
+
+            Debug.Log("enemy4 스폰 시작");
+
+            SpawnObject(enemyinfos[3].obj);
+
+            yield return enemy4Delay;
+        }
+    }
     private IEnumerator ReadyItemSpawn()
     {
         while (true)

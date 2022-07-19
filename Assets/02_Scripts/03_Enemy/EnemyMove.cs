@@ -14,7 +14,7 @@ public class EnemyMove : MonoBehaviour
     [Header("최악 체력")][SerializeField] private float lowhp = 10f;
 
     [Header("UI 관련")]
-    [SerializeField] private Text textObj = null;
+    [SerializeField] protected Text textObj = null;
 
     [Header("점수 죽였을 때")]
     public int score;
@@ -32,7 +32,7 @@ public class EnemyMove : MonoBehaviour
         FollowTextUI();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         SetRandomHPEnemy();
         UpdateTextEnemyHP();
