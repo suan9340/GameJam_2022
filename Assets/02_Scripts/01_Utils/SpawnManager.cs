@@ -40,8 +40,8 @@ public class SpawnManager : MonoBehaviour
     private Player_data playerData = null;
 
     private readonly WaitForSeconds enemyDelay = new WaitForSeconds(1.3f);
-    private readonly WaitForSeconds enemy2Delay = new WaitForSeconds(6f);
-    private readonly WaitForSeconds enemy3Delay = new WaitForSeconds(6f);
+    private readonly WaitForSeconds enemy2Delay = new WaitForSeconds(10f);
+    private readonly WaitForSeconds enemy3Delay = new WaitForSeconds(8f);
     private readonly WaitForSeconds enemy4Delay = new WaitForSeconds(10f);
 
     private readonly WaitForSeconds itemDelay = new WaitForSeconds(12f);
@@ -133,7 +133,7 @@ public class SpawnManager : MonoBehaviour
 
     private IEnumerator ReadyEnemy4Spawn()
     {
-        while(true)
+        while (true)
         {
             while (GameManager.Instance.gameState == Game_State_Enum.isSetting) yield return null;
 

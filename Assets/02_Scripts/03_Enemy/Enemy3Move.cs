@@ -43,13 +43,15 @@ public class Enemy3Move : EnemyMove
 
     private void KamBak_FadeIn(float _time)
     {
-        spriteRenderer.DOFade(0, _time).OnComplete(() => { polycollider.enabled = false; });
+        //spriteRenderer.DOFade(0, _time).OnComplete(() => { polycollider.enabled = false; });
+        spriteRenderer.DOFade(0, _time);
         textObj.DOFade(0, _time);
     }
 
     private void KamBak_FadeOut(float _time)
     {
-        spriteRenderer.DOFade(1, _time).OnComplete(() => { polycollider.enabled = true; });
+        spriteRenderer.DOFade(1, _time);
+        //spriteRenderer.DOFade(1, _time).OnComplete(() => { polycollider.enabled = true; });
         textObj.DOFade(1, _time);
     }
 }

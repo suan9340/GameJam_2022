@@ -2708,7 +2708,7 @@ MonoBehaviour:
     outScore: 1300
   - name: "\uAE5C\uBE61\uC774\uB294 \uC801"
     obj: {fileID: 3127120497083298180, guid: 01f35a28e1bd2314389fb499987feba7, type: 3}
-    outScore: 1800
+    outScore: 2100
   iteminfos:
   - name: "\uCD1D\uC54C\uC544\uD15C"
     obj: {fileID: 680126327506812372, guid: f422c168016d3444599ed4f6d03dfe7b, type: 3}
