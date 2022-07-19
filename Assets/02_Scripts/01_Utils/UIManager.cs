@@ -66,6 +66,7 @@ public class UIManager : MonoBehaviour
     [Header("별 아이템 먹었을 때 UI")]
     public Image starAttackBar = null;
 
+    private readonly WaitForSeconds attackBarDelay = new WaitForSeconds(0.05f);
     private void Awake()
     {
         playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
@@ -253,11 +254,41 @@ public class UIManager : MonoBehaviour
     {
         if (_isA)
         {
-            starAttackBar.gameObject.SetActive(true);
+            StartCoroutine(FillIn());
         }
         else
         {
-            starAttackBar.gameObject.SetActive(false);
+            StartCoroutine(FillOut());
+        }
+    }
+
+    private IEnumerator FillIn()
+    {
+        var _a = 0f;
+
+        while (true)
+        {
+            if (_a >= 1) yield break;
+            _a += 0.02f;
+            starAttackBar.fillAmount = _a;
+            yield return attackBarDelay;
+        }
+    }
+
+    private IEnumerator FillOut()
+    {
+        var _a = 1f;
+
+        while (true)
+        {
+            if (_a <= 0)
+            {
+                UIManager.Instance.ChangeAttackBar(false);
+                yield break;
+            }
+            _a -= 0.02f;
+            starAttackBar.fillAmount = _a;
+            yield return attackBarDelay;
         }
     }
 }

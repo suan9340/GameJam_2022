@@ -45,12 +45,15 @@ public class SpawnManager : MonoBehaviour
     private readonly WaitForSeconds enemy4Delay = new WaitForSeconds(10f);
 
     private readonly WaitForSeconds itemDelay = new WaitForSeconds(12f);
+    private readonly WaitForSeconds item2Delay = new WaitForSeconds(30f);
 
     private Coroutine enemyCor;
     private Coroutine enemy2Cor;
     private Coroutine enemy3Cor;
     private Coroutine enemy4Cor;
+
     private Coroutine itemCor;
+    private Coroutine item2Cor;
 
     void Start()
     {
@@ -62,6 +65,7 @@ public class SpawnManager : MonoBehaviour
         enemy4Cor = StartCoroutine(ReadyEnemy4Spawn());
 
         itemCor = StartCoroutine(ReadyItemSpawn());
+        item2Cor = StartCoroutine(ReadyItem2Spawn());
     }
 
     private IEnumerator ReadySpawnEnemy()
@@ -175,6 +179,31 @@ public class SpawnManager : MonoBehaviour
             yield return itemDelay;
         }
     }
+
+    private IEnumerator ReadyItem2Spawn()
+    {
+        while (true)
+        {
+            while (GameManager.Instance.gameState == Game_State_Enum.isSetting) yield return null;
+
+            while (playerData.current_attackPower < (playerData.max_attackPower / 2) + 5) yield return null;
+
+            //while (playerData.score < iteminfos[1].outScore) yield return null;
+
+            if (GameManager.Instance.gameState == Game_State_Enum.isDie)
+            {
+                Debug.Log("별 아이템 스폰은 그만!\n");
+                StopCoroutine(item2Cor);
+            }
+
+            Debug.Log("별 아이템 스폰 시작");
+
+            SpawnObject(iteminfos[1].obj);
+
+            yield return item2Delay;
+        }
+    }
+
 
     private void SpawnObject(GameObject _obj)
     {

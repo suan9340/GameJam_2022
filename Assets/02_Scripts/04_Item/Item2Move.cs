@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item2Move : ItemMove
 {
-    private readonly WaitForSeconds itemDuring = new WaitForSeconds(5f);
+    private readonly WaitForSeconds itemDuring = new WaitForSeconds(10f);
 
     protected override void ItemEat()
     {
