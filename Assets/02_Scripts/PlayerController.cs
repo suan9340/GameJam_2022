@@ -319,5 +319,10 @@ public class PlayerController : MonoBehaviour
             upPower = 0.7f;
             downPower = 7f;
         }
+        else if (playerData.score < attackDowns[6].score)
+        {
+            upPower = 0.4f;
+            downPower = 7.2f;
+        }
     }
 }

@@ -44,8 +44,8 @@ public class SpawnManager : MonoBehaviour
     private readonly WaitForSeconds enemy3Delay = new WaitForSeconds(8f);
     private readonly WaitForSeconds enemy4Delay = new WaitForSeconds(10f);
 
-    private readonly WaitForSeconds itemDelay = new WaitForSeconds(12f);
-    private readonly WaitForSeconds item2Delay = new WaitForSeconds(30f);
+    private readonly WaitForSeconds itemDelay = new WaitForSeconds(20f);
+    private readonly WaitForSeconds item2Delay = new WaitForSeconds(50f);
 
     private Coroutine enemyCor;
     private Coroutine enemy2Cor;
@@ -186,9 +186,10 @@ public class SpawnManager : MonoBehaviour
         {
             while (GameManager.Instance.gameState == Game_State_Enum.isSetting) yield return null;
 
-            while (playerData.current_attackPower < (playerData.max_attackPower / 2) + 5) yield return null;
+            //while ((playerData.score < iteminfos[1].outScore) && (playerData.current_attackPower > (playerData.max_attackPower / 2) + 5)) yield return null;
 
-            //while (playerData.score < iteminfos[1].outScore) yield return null;
+            while (playerData.score < iteminfos[1].outScore) yield return null;
+            while (playerData.current_attackPower > playerData.max_attackPower / 2) yield return null;
 
             if (GameManager.Instance.gameState == Game_State_Enum.isDie)
             {

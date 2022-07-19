@@ -142,12 +142,22 @@ public class AudioManager : MonoBehaviour
         FX.Play();
     }
 
-
     public void OnClickStart()
     {
         BGM.Stop();
     }
 
+    public void ItemEatSound(bool _ischeck)
+    {
+        if (_ischeck)
+        {
+            BGM.pitch = 1.08f;
+        }
+        else
+        {
+            BGM.pitch = 1f;
+        }
+    }
 }
 
 

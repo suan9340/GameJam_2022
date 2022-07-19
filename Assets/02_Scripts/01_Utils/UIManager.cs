@@ -286,8 +286,8 @@ public class UIManager : MonoBehaviour
         {
             if (_a <= 0)
             {
-                Debug.Log("³¡");
                 GameManager.Instance.SettingItemState(Player_Item_State.Idle);
+                AudioManager.Instance.ItemEatSound(false);
                 yield break;
             }
             _a -= 0.02f;
