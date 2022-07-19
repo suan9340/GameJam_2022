@@ -2716,7 +2716,7 @@ MonoBehaviour:
     outScore: 500
   - name: "\uBCC4\uC54C\uC544\uD15C"
     obj: {fileID: 8250167127114392959, guid: 1a7539c22cb6f3744b38a1af76291e64, type: 3}
-    outScore: 1300
+    outScore: 1000
 --- !u!1 &671434560
 GameObject:
   m_ObjectHideFlags: 0
