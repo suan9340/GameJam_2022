@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using DG.Tweening;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
@@ -252,8 +252,12 @@ public class UIManager : MonoBehaviour
     public void ChangeAttackBar(bool _isA)
     {
         if (_isA)
+        {
             starAttackBar.gameObject.SetActive(true);
+        }
         else
+        {
             starAttackBar.gameObject.SetActive(false);
+        }
     }
 }
