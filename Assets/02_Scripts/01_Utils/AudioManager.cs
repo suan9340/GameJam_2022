@@ -58,7 +58,7 @@ public class AudioManager : MonoBehaviour
 
     private float backVol = 1;
     private float vfxVol = 1;
-    
+
     public bool isBGMStop = false;
     public bool isFxStop = false;
     private void Start()
@@ -66,13 +66,6 @@ public class AudioManager : MonoBehaviour
         SetVolume();
     }
 
-    void Update()
-    {
-        if (!BGM.isPlaying)
-        {
-            RandomPlay();
-        }
-    }
 
     private void SetVolume()
     {
@@ -81,12 +74,9 @@ public class AudioManager : MonoBehaviour
 
         vfxVol = PlayerPrefs.GetFloat(ConstantManager.VOL_VFX, 1f);
         FXSlider.value = vfxVol;
-
-       
-
     }
 
-    
+
 
     public void BGMSoundSlider()
     {

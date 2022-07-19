@@ -196,6 +196,7 @@ public class UIManager : MonoBehaviour
 
     public void OnClickRestartGame()
     {
+        AudioManager.Instance.RandomPlay();
         SceneManager.LoadScene(1);
     }
 

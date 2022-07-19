@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
     {
         //GameManager.Instance.ItemGunStart();
         StartCoroutine(PlayerAction());
+        AudioManager.Instance.RandomPlay(); 
     }
 
     private void Update()
