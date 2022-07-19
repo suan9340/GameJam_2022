@@ -8,12 +8,12 @@ public class Item2Move : ItemMove
 
     protected override void ItemEat()
     {
-        gameObject.transform.position = new Vector3(10f, 10f, 0);
-
-        AudioManager.Instance.ItemEat();
         ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.item2Eat, transform.position);
 
+        AudioManager.Instance.ItemEat();
         StartCoroutine(DuringStar());
+        
+        gameObject.transform.position = new Vector3(100f, 100f, 0);
     }
 
     private IEnumerator DuringStar()
@@ -22,9 +22,9 @@ public class Item2Move : ItemMove
         UIManager.Instance.ChangeAttackBar(true);
 
         playerData.current_attackPower = playerData.max_attackPower;
+
         yield return itemDuring;
 
-        GameManager.Instance.SettingItemState(Player_Item_State.Idle);
         UIManager.Instance.ChangeAttackBar(false);
 
         Destroy(gameObject);

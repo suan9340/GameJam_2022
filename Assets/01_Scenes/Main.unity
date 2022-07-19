@@ -2716,7 +2716,7 @@ MonoBehaviour:
     outScore: 600
   - name: "\uBCC4\uC54C\uC544\uD15C"
     obj: {fileID: 8250167127114392959, guid: 1a7539c22cb6f3744b38a1af76291e64, type: 3}
-    outScore: 600
+    outScore: 0
 --- !u!1 &671434560
 GameObject:
   m_ObjectHideFlags: 0
@@ -9034,6 +9034,18 @@ PrefabInstance:
     - target: {fileID: 8250167127114392946, guid: 1a7539c22cb6f3744b38a1af76291e64, type: 3}
       propertyPath: m_RootOrder
       value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250167127114392946, guid: 1a7539c22cb6f3744b38a1af76291e64, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250167127114392946, guid: 1a7539c22cb6f3744b38a1af76291e64, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250167127114392946, guid: 1a7539c22cb6f3744b38a1af76291e64, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 8250167127114392946, guid: 1a7539c22cb6f3744b38a1af76291e64, type: 3}
       propertyPath: m_LocalPosition.x

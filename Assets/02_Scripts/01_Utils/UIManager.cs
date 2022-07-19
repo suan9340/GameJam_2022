@@ -250,9 +250,9 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// 별 아이템 먹었을 때 공격력 bar가 변하도록
     /// </summary>
-    public void ChangeAttackBar(bool _isA)
+    public void ChangeAttackBar(bool _isCheck)
     {
-        if (_isA)
+        if (_isCheck)
         {
             StartCoroutine(FillIn());
         }
@@ -268,7 +268,10 @@ public class UIManager : MonoBehaviour
 
         while (true)
         {
-            if (_a >= 1) yield break;
+            if (_a >= 1)
+            {
+                yield break;
+            }
             _a += 0.02f;
             starAttackBar.fillAmount = _a;
             yield return attackBarDelay;
@@ -283,7 +286,8 @@ public class UIManager : MonoBehaviour
         {
             if (_a <= 0)
             {
-                UIManager.Instance.ChangeAttackBar(false);
+                Debug.Log("끝");
+                GameManager.Instance.SettingItemState(Player_Item_State.Idle);
                 yield break;
             }
             _a -= 0.02f;
