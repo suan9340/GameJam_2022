@@ -5720,12 +5720,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: e0a05054ef7695545a313df7045ffebe, type: 3}
   - name: "\uD50C\uB808\uC774\uC5B4 \uCD1D\uC18C\uB9AC \uC0AC\uC6B4"
     clip: {fileID: 8300000, guid: a9935ea50e783e1468fc721860552221, type: 3}
-  - name: "\uD50C\uB808\uC774\uC5B4 \uC8FD\uC5C8\uC744 \uB54C \uC0AC\uC6B4\uB4DC"
-    clip: {fileID: 0}
   - name: "\uC544\uC774\uD15C \uD68D\uB4DD \uC0AC\uC6B4\uB4DC"
     clip: {fileID: 8300000, guid: b7bdb1cb8333d2849bbab2c406762326, type: 3}
   - name: "\uBC84\uD2BC \uD074\uB9AD \uC0AC\uC6B4\uB4DC"
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 0acb9446c0afd3f4bac9b6c613004ff6, type: 3}
   isBGMStop: 0
   isFxStop: 0
 --- !u!4 &1243349503

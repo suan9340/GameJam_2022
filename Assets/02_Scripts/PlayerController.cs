@@ -26,9 +26,12 @@ public class PlayerController : MonoBehaviour
     public Player_State_Enum playerState;
 
 
-    public static readonly WaitForSeconds shootDelay = new WaitForSeconds(0.16f);
-    public static readonly WaitForSeconds powerDelay = new WaitForSeconds(0.06f);
-    public static readonly WaitForSeconds playerDelay = new WaitForSeconds(0.1f);
+    private readonly WaitForSeconds shootDelay = new WaitForSeconds(0.16f);
+    private readonly WaitForSeconds powerDelay = new WaitForSeconds(0.06f);
+    private readonly WaitForSeconds playerDelay = new WaitForSeconds(0.1f);
+
+    private readonly WaitForSeconds itemReturnDelay = new WaitForSeconds(50f);
+
 
     // 키 입력받는 bool
     private bool isLeftBtn = false;
@@ -192,6 +195,8 @@ public class PlayerController : MonoBehaviour
                     SpawnORInstantiate(gunInfo[1].transform, gunInfo[1].obj);
                     SpawnORInstantiate(gunInfo[2].transform, gunInfo[2].obj);
                     SpawnORInstantiate(gunInfo[3].transform, gunInfo[3].obj);
+
+                    StartCoroutine(CheckGunItemState());
                     break;
 
                 case 3:
@@ -219,6 +224,14 @@ public class PlayerController : MonoBehaviour
             yield return shootDelay;
         }
 
+    }
+
+    /// <summary>
+    /// 얻은 총알 아이템이 시간이 지나면 되돌아가도록 하는 함수
+    /// </summary>
+    private IEnumerator CheckGunItemState()
+    {
+        yield return itemReturnDelay;
     }
 
     private void SpawnORInstantiate(Transform _posTrn, GameObject _obj)
