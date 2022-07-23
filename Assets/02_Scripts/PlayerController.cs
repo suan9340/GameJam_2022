@@ -324,33 +324,33 @@ public class PlayerController : MonoBehaviour
         }
         else if (playerData.score < attackDowns[1].score)
         {
-            upPower = 2f;
-            downPower = 4f;
+            upPower = 2.1f;
+            downPower = 3.9f;
         }
         else if (playerData.score < attackDowns[2].score)
         {
-            upPower = 1.5f;
-            downPower = 4.6f;
+            upPower = 1.8f;
+            downPower = 4.2f;
         }
         else if (playerData.score < attackDowns[3].score)
         {
-            upPower = 1.2f;
-            downPower = 5.3f;
+            upPower = 1.4f;
+            downPower = 4.9f;
         }
         else if (playerData.score < attackDowns[4].score)
         {
             upPower = 1f;
-            downPower = 6f;
+            downPower = 5.7f;
         }
         else if (playerData.score < attackDowns[5].score)
         {
-            upPower = 0.7f;
-            downPower = 7f;
+            upPower = 0.86f;
+            downPower = 6.6f;
         }
         else if (playerData.score < attackDowns[6].score)
         {
-            upPower = 0.4f;
-            downPower = 7.2f;
+            upPower = 0.78f;
+            downPower = 7f;
         }
     }
 }

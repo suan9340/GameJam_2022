@@ -69,6 +69,8 @@ public class AudioManager : MonoBehaviour
 
     private void SetVolume()
     {
+        BGM.pitch = 1f;
+
         backVol = PlayerPrefs.GetFloat(ConstantManager.VOL_BACK, 1f);
         BGMSlider.value = backVol;
 
@@ -132,7 +134,7 @@ public class AudioManager : MonoBehaviour
 
     public void ItemEat()
     {
-        FX3.clip = vFXInfos[3].clip;
+        FX3.clip = vFXInfos[2].clip;
         FX3.Play();
     }
 
@@ -157,6 +159,11 @@ public class AudioManager : MonoBehaviour
         {
             BGM.pitch = 1f;
         }
+    }
+
+    public void PlayerDieSound()
+    {
+        BGM.pitch = 0.9f;
     }
 }
 

@@ -43,16 +43,6 @@ public class GameManager : MonoBehaviour
         playerData = Resources.Load<Player_data>("SO/" + "PlayerData");
     }
 
-    //private void OnEnable()
-    //{
-    //    if (playerData.isfirst)
-    //    {
-    //        playerData.isfirst = false;
-
-    //        UIManager.Instance.OnClickQuestion();
-    //    }
-    //}
-
     private void Start()
     {
         MinPosition = new Vector2(-10.4f, -6.2f);

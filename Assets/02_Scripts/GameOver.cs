@@ -55,6 +55,8 @@ public class GameOver : MonoBehaviour
 
     private void ConnectUI()
     {
+        AudioManager.Instance.PlayerDieSound();
+            
         CheckHighScore();
 
         scoreText.text = $"SCORE : {playerData.score}";
