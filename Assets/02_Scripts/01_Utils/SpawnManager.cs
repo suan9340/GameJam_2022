@@ -44,7 +44,7 @@ public class SpawnManager : MonoBehaviour
     private readonly WaitForSeconds enemy3Delay = new WaitForSeconds(8f);
     private readonly WaitForSeconds enemy4Delay = new WaitForSeconds(10f);
 
-    private readonly WaitForSeconds itemDelay = new WaitForSeconds(46f);
+    private readonly WaitForSeconds itemDelay = new WaitForSeconds(40f);
     private readonly WaitForSeconds item2Delay = new WaitForSeconds(50f);
 
     private Coroutine enemyCor;

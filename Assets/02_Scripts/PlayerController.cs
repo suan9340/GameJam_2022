@@ -27,11 +27,6 @@ public class PlayerController : MonoBehaviour
 
 
     private readonly WaitForSeconds shootDelay = new WaitForSeconds(0.16f);
-    private readonly WaitForSeconds powerDelay = new WaitForSeconds(0.06f);
-    private readonly WaitForSeconds playerDelay = new WaitForSeconds(0.1f);
-
-    private readonly WaitForSeconds itemReturnDelay = new WaitForSeconds(50f);
-
 
     // 키 입력받는 bool
     private bool isLeftBtn = false;
@@ -51,6 +46,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("점수에 따른 공격력 증가")]
     public List<playerAttackDown> attackDowns = new List<playerAttackDown>();
+
+
+    private bool isDownItemStart = false;
 
     private void Awake()
     {
@@ -191,12 +189,11 @@ public class PlayerController : MonoBehaviour
                     break;
 
                 case 2:
+
                     SpawnORInstantiate(gunInfo[0].transform, gunInfo[0].obj);
                     SpawnORInstantiate(gunInfo[1].transform, gunInfo[1].obj);
                     SpawnORInstantiate(gunInfo[2].transform, gunInfo[2].obj);
                     SpawnORInstantiate(gunInfo[3].transform, gunInfo[3].obj);
-
-                    StartCoroutine(CheckGunItemState());
                     break;
 
                 case 3:
@@ -217,6 +214,9 @@ public class PlayerController : MonoBehaviour
                     SpawnORInstantiate(gunInfo[5].transform, gunInfo[5].obj);
                     SpawnORInstantiate(gunInfo[6].transform, gunInfo[6].obj);
                     SpawnORInstantiate(gunInfo[7].transform, gunInfo[7].obj);
+
+                    if (isDownItemStart) break;
+                    StartCoroutine(CheckGunItemState());
                     break;
             }
 
@@ -231,7 +231,22 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private IEnumerator CheckGunItemState()
     {
-        yield return itemReturnDelay;
+        isDownItemStart = true;
+
+        Debug.Log("시작");
+        while (true)
+        {
+            var _rand = Random.Range(30, 50);
+
+            yield return new WaitForSeconds(_rand);
+
+            if (playerData.playerlevel != 0)
+            {
+                Debug.Log("사라져라 아이템!");
+                playerData.playerlevel -= 1;
+            }
+
+        }
     }
 
     private void SpawnORInstantiate(Transform _posTrn, GameObject _obj)
