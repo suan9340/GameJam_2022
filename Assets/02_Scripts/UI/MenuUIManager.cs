@@ -48,6 +48,8 @@ public class MenuUIManager : MonoBehaviour
     /// </summary>
     public void OnClickStartButton()
     {
+        AudioManager.Instance.Sound_ClickButton();
+
         if (isFirstVisit == 0)
         {
             isClickStart = true;
@@ -66,6 +68,7 @@ public class MenuUIManager : MonoBehaviour
     /// </summary>
     public void OnClickExitButton()
     {
+        AudioManager.Instance.Sound_ClickButton();
         Debug.Log("Game Exit");
         Application.Quit();
     }
@@ -76,6 +79,7 @@ public class MenuUIManager : MonoBehaviour
     /// </summary>
     public void OnClickSettingChang()
     {
+        AudioManager.Instance.Sound_ClickButton();
         isSettingChang = !isSettingChang;
         if (isSettingChang)
         {
@@ -101,6 +105,7 @@ public class MenuUIManager : MonoBehaviour
             PlayerPrefs.SetInt(ConstantManager.DATA_VISIT, isFirstVisit);
         }
 
+        AudioManager.Instance.Sound_ClickButton();
         isQuestionChang = !isQuestionChang;
         if (isQuestionChang)
         {

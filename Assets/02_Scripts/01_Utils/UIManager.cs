@@ -105,6 +105,7 @@ public class UIManager : MonoBehaviour
     public void OnClickSettingChang()
     {
         if (isCount) return;
+        AudioManager.Instance.Sound_ClickButton();
 
         isSettingChang = !isSettingChang;
         if (isSettingChang)
@@ -128,6 +129,7 @@ public class UIManager : MonoBehaviour
     public void OnClickQuestion()
     {
         if (isCount) return;
+        AudioManager.Instance.Sound_ClickButton();
 
         isQuestionChang = !isQuestionChang;
         if (isQuestionChang)
@@ -200,12 +202,14 @@ public class UIManager : MonoBehaviour
 
     public void OnClickRestartGame()
     {
+        AudioManager.Instance.Sound_ClickButton();
         AudioManager.Instance.RandomPlay();
         SceneManager.LoadScene(1);
     }
 
     public void OnClickGoToMenu()
     {
+        AudioManager.Instance.Sound_ClickButton();
         SceneManager.LoadScene(0);
     }
 

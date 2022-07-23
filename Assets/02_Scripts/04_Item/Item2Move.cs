@@ -10,7 +10,7 @@ public class Item2Move : ItemMove
     {
         ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.item2Eat, transform.position);
 
-        AudioManager.Instance.ItemEat();
+        AudioManager.Instance.Sound_ItemEat();
         AudioManager.Instance.ItemEatSound(true);
 
         StartCoroutine(DuringStar());

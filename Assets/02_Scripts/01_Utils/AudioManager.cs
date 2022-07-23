@@ -47,6 +47,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource FX;
     public AudioSource FX2;
     public AudioSource FX3;
+    public AudioSource FX4;
 
 
     public Slider BGMSlider;
@@ -94,6 +95,7 @@ public class AudioManager : MonoBehaviour
         FX.volume = FXSlider.value;
         FX2.volume = FXSlider.value;
         FX3.volume = FXSlider.value;
+        FX4.volume = FXSlider.value;
 
         vfxVol = FXSlider.value;
         PlayerPrefs.SetFloat(ConstantManager.VOL_VFX, vfxVol);
@@ -112,31 +114,57 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    // 오디오 함수에 들어가 있으니까 필요한곳에 참조해서  FX.Play();[유니티 내장 함수] 하면 실행됨 
-    public void EnemyDie()
+    /// <summary>
+    /// 적 사망 사운드
+    /// </summary>
+    public void Sound_EnemyDie()
     {
         FX2.clip = vFXInfos[0].clip;
         FX2.Play();
     }
 
 
-    public void ShootGun()
+    /// <summary>
+    /// 플레이어 총소리 사운드
+    /// </summary>
+    public void Sound_ShootGun()
     {
         FX.clip = vFXInfos[1].clip;
         FX.Play();
     }
 
-    public void PlayerDie()
-    {
-        FX.clip = vFXInfos[2].clip;
-        FX.Play();
-    }
 
-    public void ItemEat()
+    /// <summary>
+    /// 아이템 획득 사운드
+    /// </summary>
+    public void Sound_ItemEat()
     {
         FX3.clip = vFXInfos[2].clip;
         FX3.Play();
     }
+
+
+    /// <summary>
+    /// 버튼 클릭 사운드
+    /// </summary>
+    public void Sound_ClickButton()
+    {
+        FX4.clip = vFXInfos[3].clip;
+        FX4.Play();
+    }
+
+
+
+    /// <summary>
+    /// 총알 아이템 사라지는 사운드
+    /// </summary>
+    public void Sound_PlayerDie()
+    {
+        FX4.clip = vFXInfos[4].clip;
+        FX4.Play();
+    }
+
+   
 
     public void ClickButton()
     {

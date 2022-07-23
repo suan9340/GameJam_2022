@@ -49,7 +49,7 @@ public class ItemMove : MonoBehaviour
 
     protected virtual void ItemEat()
     {
-        AudioManager.Instance.ItemEat();
+        AudioManager.Instance.Sound_ItemEat();
         ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.itemEat, transform.position);
         CheckItemCurrent();
         Destroy(gameObject);

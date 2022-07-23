@@ -90,7 +90,7 @@ public class EnemyMove : MonoBehaviour
     protected virtual void EnemyDie()
     {
         // 사운드 && 이펙트 
-        AudioManager.Instance.EnemyDie();
+        AudioManager.Instance.Sound_EnemyDie();
         ParticleManager.Instance.AddParticle(ParticleManager.ParticleType.enmeyDie, transform.position);
 
         // 카메라 쉐이킹 및 피격 테두리 처리

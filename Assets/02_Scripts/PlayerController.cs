@@ -220,7 +220,7 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
-            AudioManager.Instance.ShootGun();
+            AudioManager.Instance.Sound_ShootGun();
             yield return shootDelay;
         }
 
@@ -242,6 +242,8 @@ public class PlayerController : MonoBehaviour
 
             if (playerData.playerlevel != 0)
             {
+                AudioManager.Instance.Sound_PlayerDie();
+
                 Debug.Log("사라져라 아이템!");
                 playerData.playerlevel -= 1;
             }
